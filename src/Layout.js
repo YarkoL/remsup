@@ -25,13 +25,17 @@ const Header = () => (
 const Left = () => (
 	<div className="left">
 	    <img className="center" src = "img/clock.jpg"/>
+	    
 	  	<div id="buttons">
-	  		<div id="buttongroup" className="center">
-		  		<button><Link to="/">Live feed</Link></button><br/>
-		  		<button><Link to="/logs">Review logs</Link></button><br/>
-		  		<button><Link to="/users">Manage users</Link></button><br/>
-	  		</div>
+	  		<ul id="buttongroup">
+
+	  		
+		  		<li><Link to="/">Live feed</Link></li><br/>
+		  		<li><Link to="/logs">Review logs</Link></li><br/>
+		  		<li><Link to="/users">Manage users</Link></li><br/>
+	  		</ul>
 	  	</div>
+	  	
 	</div>
 )
 
