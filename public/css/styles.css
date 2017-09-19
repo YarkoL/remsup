@@ -58,3 +58,14 @@ button {
   margin-bottom: 3px;
 
 }
+
+
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+   color: yellow;
+}

@@ -1,5 +1,22 @@
 "use strict"
 import React from 'react';  
+import { Switch, Route, Link } from 'react-router-dom';
+
+//MAIN VIEWS
+
+const LiveFeed = () => (
+	<h1>Live feed</h1>
+)
+
+const ViewLogs = () => (
+	<h1>View logs</h1>
+)
+
+const UserManagement = () => (
+	<h1>User Management</h1>
+)
+
+//APPFRAME LAYOUT
 
 const Header = () => (
 	<header></header>
@@ -10,16 +27,22 @@ const Left = () => (
 	    <img className="center" src = "img/clock.jpg"/>
 	  	<div id="buttons">
 	  		<div id="buttongroup" className="center">
-		  		<button>Live feed</button><br/>
-		  		<button>Review logs</button><br/>
-		  		<button>Manage users</button><br/>
+		  		<button><Link to="/">Live feed</Link></button><br/>
+		  		<button><Link to="/logs">Review logs</Link></button><br/>
+		  		<button><Link to="/users">Manage users</Link></button><br/>
 	  		</div>
 	  	</div>
 	</div>
 )
 
 const Middle = () => (
-	<div className="middle"></div>
+	<div className="middle">
+		<Switch>
+		      <Route exact path='/' component={LiveFeed}/>
+		      <Route path='/logs' component={ViewLogs}/>
+		      <Route path='/users' component={UserManagement}/>
+   		</Switch>
+	</div>
 )
 
 const Right = () => (
@@ -36,5 +59,7 @@ const Layout = () => (
 		</main>
 	</div>
 )
+
+
 
 export default Layout;
