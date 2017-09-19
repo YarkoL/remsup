@@ -18,12 +18,7 @@ main {
   display: block;
   margin: 0 auto; 
 }
-/*
-footer {
-  flex: 0 0 40px;
-  background-color: #C14F4F;
-}
-*/
+
 .left {
   flex: 0 2 250px;
   background-color: #5b5b5b;
@@ -34,18 +29,19 @@ footer {
 }
 .middle {
   flex:1 1 300px;
+  padding: 10px;
 }
 #buttons {
   background-color: #000;
 }
 
-#buttongroup {
+.menu {
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 8px 3px 8px 3px;
 }
 
-li {
+.menu li {
   background-color: #0d69b2; 
   border: 1px solid #fff;
   border-radius:2px; 
@@ -57,8 +53,12 @@ li {
   margin-bottom: 3px;
   display: inline-block;
   width: 90%;
+}
 
-
+.brand {
+  position: absolute;
+  bottom: 0;
+  width: 250px;
 }
 
 

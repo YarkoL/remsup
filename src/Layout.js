@@ -27,7 +27,7 @@ const Left = () => (
 	    <img className="center" src = "img/clock.jpg"/>
 	    
 	  	<div id="buttons">
-	  		<ul id="buttongroup">
+	  		<ul className="menu">
 
 	  		
 		  		<li><Link to="/">Live feed</Link></li><br/>
@@ -35,6 +35,8 @@ const Left = () => (
 		  		<li><Link to="/users">Manage users</Link></li><br/>
 	  		</ul>
 	  	</div>
+	  
+	  	<img className="brand" src = "img/brand.jpg"/>
 	  	
 	</div>
 )
