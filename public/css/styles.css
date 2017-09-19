@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  flex: 0 0 75px;
+  background-color: #303030;
+}
+main {
+  flex: 1;
+  display: flex;
+  background-color: #d8d8d8;
+}
+/*
+footer {
+  flex: 0 0 40px;
+  background-color: #C14F4F;
+}
+*/
+.left {
+  flex: 0 2 250px;
+  background-color: #5b5b5b;
+}
+.right {
+  flex: 0 2 250px;
+  background-color: #ffffff;
+}
+.middle {
+  flex:1 1 300px;
+}
+.button {
+  background-color: #0d69b2;
+  color: #ffffff;
+  /*TODO border, rounding*/
+}
