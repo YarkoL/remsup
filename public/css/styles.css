@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /*background-color: #00ff00;*/
 }
 header {
   flex: 0 0 75px;
@@ -12,6 +11,11 @@ main {
   flex: 1;
   display: flex;
   background-color: #d8d8d8;
+}
+
+.center {
+  display: block;
+  margin: 0 auto; 
 }
 /*
 footer {
@@ -30,8 +34,27 @@ footer {
 .middle {
   flex:1 1 300px;
 }
-.button {
-  background-color: #0d69b2;
-  color: #ffffff;
-  /*TODO border, rounding*/
+#buttons {
+  background-color: #000;
+}
+
+#buttongroup {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 8px 3px 8px 3px;
+}
+
+button {
+  background-color: #0d69b2; 
+  border: 1px solid #fff;
+  border-radius:2px; 
+  color: white;
+  padding: 8px 8px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+ 
+  width: 98%;
+  margin-bottom: 3px;
+
 }
