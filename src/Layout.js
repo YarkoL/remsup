@@ -1,6 +1,7 @@
-"use strict"
+
 import React from 'react';  
 import { Switch, Route, Link } from 'react-router-dom';
+import Login from './Login';
 
 //MAIN VIEWS
 
@@ -37,7 +38,7 @@ const Left = () => (
 		  		<li><Link to="/users">Manage users</Link></li><br/>
 	  		</ul>
 	  	</div>
-	  
+	             <Link to="/login">login</Link>                                                                                                                
 	  	<img className="brand" src = "img/brand.jpg"/>
 	  	
 	</div>

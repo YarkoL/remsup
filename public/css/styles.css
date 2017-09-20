@@ -16,8 +16,35 @@ main {
 }
 
 .center {
-  display: block;
-  margin: 0 auto; 
+  text-align: center;
+  line-height: 40;
+}
+
+#formcontainer {
+    background-image:url(../img/login.png);
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-color: #5b5b5b;
+    max-width: 100%;
+    height: auto;
+}
+
+#formcontainer form .username {
+  width: 300px;
+  border: 0;
+  padding: 5px;
+  border-radius: 0;
+}
+
+#formcontainer form .submit { 
+  width: 100px;
+  padding: 5px;
+  background-color: #0d69b2; 
+  border: 0;
+  border-color: white;
+  color: white;
+  text-align: center;
+  text-decoration: none;
 }
 
 .left {
@@ -60,6 +87,7 @@ main {
 .brand {
   position: absolute;
   bottom: 0;
+  left:8px;
   width: 250px;
 }
 
@@ -93,9 +121,9 @@ header input {
 }
 
 a:link, a:visited {
-    color: white;
-    text-decoration: none;
-    display: inline-block;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
 }
 
 a:hover, a:active {

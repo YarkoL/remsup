@@ -1,15 +1,17 @@
 "use strict"
 import React from 'react';  
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Layout from './Layout';
-
-
+import Login from './Login';
 
 const App = () => (
 	<Router>
-		<Layout/>
+	<Switch>
+      <Route path="/login" component={Login} />
+      <Route path="/" component={Layout} />
+    </Switch>
 	</Router>
 )
 
