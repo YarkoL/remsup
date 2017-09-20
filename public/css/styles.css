@@ -6,6 +6,7 @@
 }
 header {
   flex: 0 0 75px;
+  /*float: left;*/
   background-color: #303030;
 }
 main {
@@ -20,11 +21,12 @@ main {
 }
 
 .left {
-  flex: 0 2 250px;
+  flex: 0 0 250px;
   background-color: #5b5b5b;
+  margin: 0 auto; 
 }
 .right {
-  flex: 0 2 250px;
+  flex: 0 0 250px;
   background-color: #ffffff;
 }
 .middle {
@@ -61,6 +63,34 @@ main {
   width: 250px;
 }
 
+header img {
+  height: 75px;
+}
+
+header input {
+  width: 650px;
+  padding: 5px;
+  height: 25px;
+  bottom: 23px;
+  background-image: url('../img/magnifier.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  border: 1px solid #fff;
+  border-radius:7px; 
+  position: absolute;
+  top: 30px;
+ }
+
+.logo {
+  padding-top:  8px;
+  left: 8px;
+}
+
+.icons {
+  position: absolute;
+  padding-top:  8px;
+  right: 8px;
+}
 
 a:link, a:visited {
     color: white;

@@ -19,7 +19,11 @@ const UserManagement = () => (
 //APPFRAME LAYOUT
 
 const Header = () => (
-	<header></header>
+	<header>
+		<img className="logo" src="img/logo.jpg"/>
+		<input placeholder="search/filter" />
+		<img className="icons" src="img/icons-header.jpg"/>
+	</header>
 )
 
 const Left = () => (
@@ -28,8 +32,6 @@ const Left = () => (
 	    
 	  	<div id="buttons">
 	  		<ul className="menu">
-
-	  		
 		  		<li><Link to="/">Live feed</Link></li><br/>
 		  		<li><Link to="/logs">Review logs</Link></li><br/>
 		  		<li><Link to="/users">Manage users</Link></li><br/>
