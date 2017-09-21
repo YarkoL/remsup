@@ -75,13 +75,9 @@ class AppFrame extends React.Component {
    
   componentWillMount() {
     if (store.get('loggedIn') ===  false  ) {
-	console.log ("You are nnot logged in.  Redirecting you to login form");
-	this.redirectToLogin();
+  	  console.log ("You are nnot logged in.  Redirecting you to login form");
+  	  this.redirectToLogin();
     }
-  }
-
-  redirectToLogin = () => {
-     this.props.history.push("/login");
   }
 
   handleSubmit = (event) => {
@@ -91,6 +87,10 @@ class AppFrame extends React.Component {
     this.redirectToLogin();
   } 
 
+  redirectToLogin = () => {
+     this.props.history.push("/login");
+  }
+
   render () {
   	return (
       <div>
@@ -99,8 +99,8 @@ class AppFrame extends React.Component {
   		 <input type="submit" value="Log out" />
   		</form>
       </div>
-  		);
-	 }
+  	);
   }
+}
 
 export default withRouter(AppFrame);
