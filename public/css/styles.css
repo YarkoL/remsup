@@ -15,9 +15,14 @@ main {
   background-color: #d8d8d8;
 }
 
-.center {
+.loginform {
   text-align: center;
   line-height: 40;
+}
+
+.center {
+  display: block;
+  margin: 0 auto;
 }
 
 #formcontainer {

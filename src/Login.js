@@ -1,5 +1,7 @@
 
-import React from 'react';  
+import React from 'react'; 
+import store from 'store';
+import { withRouter } from 'react-router-dom';
 
 class Login extends React.Component {
 	constructor(props) {
@@ -7,49 +9,42 @@ class Login extends React.Component {
 
 		this.state = {
 	      username: '',
-	      error: false,
 	    };
+  	}
 
-	    this.handleChange = this.handleChange.bind(this);
-	    this.onSubmit = this.onSubmit.bind(this);
-  }
+	handleSubmit = (ev) => {
+		ev.preventDefault();
 
-  onSubmit(e) {
-    e.preventDefault();
+		var username = this.state.username;
 
-    const { username } = this.state;
-    console.log(username);
-    this.setState({ error: false });
+		if (username === 'studio' ) {
+		  console.log("you're logged in!");
+		  store.set('loggedIn', true);
+		  this.props.history.push("/");
+		} else {
+		  alert(username + " is wrong username!");
+		}
+	}
 
-    if (!(username === 'studio')) {
-      return this.setState({ error: true });
-    }
-
-    console.log("you're logged in. yay!");
-    store.set('loggedIn', true);
-  }
-
-  handleChange(e, { name, value }) {
-    this.setState({ [name]: value });
-  }
-
+	handleChange = (ev) => {
+	    this.setState({username: ev.target.value});
+	}
 
 	render() {
- 		const { error } = this.state;
- 		if ({error}) { 
- 			alert('wrong username!');
- 		}
-		return(
-			 
+		return( 
 			<div id="formcontainer">
-				<form className = "center" action="" error={error} onSubmit={this.onSubmit}>
-			    <input className="username"id="username" type="text" placeholder="enter username" name="username"  onChange={this.handleChange}/>
-			    <input className="submit" id="submit" type="submit" value="login"  />
-				</form>
+				<form className = "loginform" action="" onSubmit={this.handleSubmit}>
+				    <input className="username" id="username" type="text" 
+				    	placeholder="enter 'studio' to log in" name="username"
+				    	value={this.state.username} 
+				    	onChange={this.handleChange} 
+				    	/>
+				    <input className="submit" id="submit" type="submit" value="Username" />
+			    </form>
 			</div>
 		);	
 	}
 }
 
 
-export default Login;
+export default withRouter(Login);
