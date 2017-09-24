@@ -11844,7 +11844,7 @@ var _AppFrame = __webpack_require__(233);
 
 var _AppFrame2 = _interopRequireDefault(_AppFrame);
 
-var _Login = __webpack_require__(245);
+var _Login = __webpack_require__(249);
 
 var _Login2 = _interopRequireDefault(_Login);
 
@@ -27133,9 +27133,9 @@ var Header = function Header() {
   return _react2.default.createElement(
     'header',
     null,
-    _react2.default.createElement('img', { className: 'logo', src: 'img/logo.jpg' }),
+    _react2.default.createElement('img', { className: 'logo', src: __webpack_require__(245) }),
     _react2.default.createElement('input', { placeholder: 'search/filter' }),
-    _react2.default.createElement('img', { className: 'icons', src: 'img/icons-header.jpg' })
+    _react2.default.createElement('img', { className: 'icons', src: __webpack_require__(246) })
   );
 };
 
@@ -27143,7 +27143,7 @@ var Left = function Left() {
   return _react2.default.createElement(
     'div',
     { className: 'left' },
-    _react2.default.createElement('img', { className: 'center', src: 'img/clock.jpg' }),
+    _react2.default.createElement('img', { className: 'center', src: __webpack_require__(247) }),
     _react2.default.createElement(
       'div',
       { id: 'buttons' },
@@ -27182,7 +27182,7 @@ var Left = function Left() {
         _react2.default.createElement('br', null)
       )
     ),
-    _react2.default.createElement('img', { className: 'brand', src: 'img/brand.jpg' })
+    _react2.default.createElement('img', { className: 'brand', src: __webpack_require__(248) })
   );
 };
 
@@ -27250,8 +27250,11 @@ var AppFrame = function (_React$Component) {
     value: function componentWillMount() {
       if (_store2.default.get('loggedIn') === true) {
         return;
+        //TODO this construction is awkward but needed because the 
+        //key might not exist yet in store and because the style
+        //guidelines forbid the use of ! operator
       } else {
-        console.log("You are nnot logged in.  Redirecting you to login form");
+        console.log("You are not logged in.  Redirecting you to login form");
         this.redirectToLogin();
       }
     }
@@ -28469,6 +28472,30 @@ if (typeof JSON !== "object") {
 
 /***/ }),
 /* 245 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/img/logo_75d568f.jpg";
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/img/icons-header_f418709.jpg";
+
+/***/ }),
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/img/clock_2df5dbe.jpg";
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/img/brand_0cadb36.jpg";
+
+/***/ }),
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

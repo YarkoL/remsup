@@ -21,15 +21,15 @@ const UserManagement = () => (
 
 const Header = () => (
   <header>
-    <img className="logo" src="img/logo.jpg"/>
+    <img className="logo" src={require('./img/logo.jpg')}/>
     <input placeholder="search/filter" />
-    <img className="icons" src="img/icons-header.jpg"/>
+    <img className="icons" src={require('./img/icons-header.jpg')}/>
   </header>
 )
 
 const Left = () => (
   <div className="left">
-      <img className="center" src = "img/clock.jpg"/>
+      <img className="center" src = {require('./img/clock.jpg')}/>
       
       <div id="buttons">
         <ul className="menu">
@@ -38,7 +38,7 @@ const Left = () => (
           <li><Link to="/users">Manage users</Link></li><br/>
         </ul>
       </div>                                                                                                          
-      <img className="brand" src = "img/brand.jpg"/>
+      <img className="brand" src = {require('./img/brand.jpg')}/>
       
   </div>
 )

@@ -15,7 +15,15 @@ module.exports = {
 				test:/\.js$/,
 				exclude:/node_modules/,
 				loader: 'babel-loader',
+			},
+			{
+				test: /\.(png|svg|jpg|gif)$/,
+				loader: 'file-loader',
+				options: {
+        			name: '/img/[name]_[hash:7].[ext]',
+      			}
 			}
+
 		]
 	}
 }
