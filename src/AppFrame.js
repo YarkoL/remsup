@@ -74,8 +74,13 @@ const Layout = () => (
 class AppFrame extends React.Component {
    
   componentWillMount() {
-    if (store.get('loggedIn') ===  false  ) {
-  	  console.log ("You are nnot logged in.  Redirecting you to login form");
+    if (store.get('loggedIn') ===  true ) {
+      return;
+      //TODO this construction is awkward but needed because the 
+      //key might not exist yet in store and because the style
+      //guidelines forbid the use of ! operator
+    } else {
+  	  console.log ("You are not logged in.  Redirecting you to login form");
   	  this.redirectToLogin();
     }
   }
