@@ -17,11 +17,7 @@ by Jarkko 09-21-17
 
 	node server.js
 
-5. Start webpack
-
-	npm run webpack
-
-6. To view the site, open a browser window and go to
+5. To view the site, open a browser window and go to
 
 	http://localhost:3000
 

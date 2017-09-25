@@ -11838,6 +11838,10 @@ var _reactDom = __webpack_require__(120);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _store = __webpack_require__(104);
+
+var _store2 = _interopRequireDefault(_store);
+
 var _reactRouterDom = __webpack_require__(58);
 
 var _AppFrame = __webpack_require__(233);
@@ -11862,7 +11866,7 @@ var App = function App() {
     )
   );
 };
-
+_store2.default.set('loggedIn', false);
 var destination = document.getElementById("app");
 
 _reactDom2.default.render(_react2.default.createElement(App, null), destination);

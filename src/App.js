@@ -1,6 +1,7 @@
 "use strict"
 import React from 'react';  
 import ReactDOM from 'react-dom';
+import store from 'store';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import AppFrame from './AppFrame';
@@ -14,7 +15,7 @@ const App = () => (
     </Switch>
 	</Router>
 )
-
+store.set('loggedIn', false);
 const destination = document.getElementById("app");
 
 ReactDOM.render( <App />, destination );
