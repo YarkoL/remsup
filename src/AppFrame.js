@@ -2,11 +2,33 @@ import React from 'react';
 import store from 'store';
 import { Switch, Route, Link, withRouter } from 'react-router-dom';
 
+import TicketList from './Ticket';
+
+//some test content for tickets
+
+let data = [
+  {
+    avatar : "https://placehold.it/75",
+    status : "closed",
+    username : "Bilbo",
+    timestamp : "09/26/17 15:03",
+    desc: "I need to get out of this cave"
+  },
+  {
+    avatar : "https://placehold.it/75",
+    status : "open",
+    username : "Gollum",
+    timestamp : "09/26/17 15:05",
+    desc: "I miss my preciousss"
+  }
+]
+
 
 //MAIN VIEWS -- these will be made into separate components
 
 const LiveFeed = () => (
-  <h1>Live feed</h1>
+  <TicketList tickets={data} />
+
 )
 
 const ViewLogs = () => (
@@ -37,7 +59,8 @@ const Left = () => (
           <li><Link to="/logs">Review logs</Link></li><br/>
           <li><Link to="/users">Manage users</Link></li><br/>
         </ul>
-      </div>                                                                                                          
+      </div>            
+                                                                                                 
       <img className="brand" src = {require('./img/brand.jpg')}/>
       
   </div>
@@ -98,11 +121,11 @@ class AppFrame extends React.Component {
 
   render () {
   	return (
-      <div>
-      <Layout/>
-  		<form  onSubmit={this.handleSubmit}>
-  		 <input type="submit" value="Log out" />
-  		</form>
+     <div>
+        <Layout/>
+        <form  onSubmit={this.handleSubmit}>
+           <input type="submit" value="Log out" />
+        </form>
       </div>
   	);
   }
