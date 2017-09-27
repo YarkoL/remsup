@@ -11,7 +11,7 @@ class Rtc extends React.Component {
 	     
 	    };
   	}
-
+*/
 
 	handleSend = (ev) => {
 		ev.preventDefault();
@@ -20,21 +20,19 @@ class Rtc extends React.Component {
 
 	handleStop = (ev) => {
 		ev.preventDefault();
-		console.log("RTC : pushed send button");
+		console.log("RTC : pushed stop button");
 	}
 
-	 <button id="stopButton" onSubmit={this.handleStop}>Stop</button>
-		      <div id="videoFrames"></div>
-		      <input type="text" id="chatInput" placeholder="Say something" />
-		      <button id="sendButton" onSubmit={this.handleSend}>Send</button>
-		      <div id="chat"></div>
-*/
+
 	render() {
 	
 		return (
 		    <div id="content">    
-		      <p>* RTC UI *</p>
-		      
+		    <button id="stopButton" onClick={this.handleStop} >Stop</button>
+			<div id="videoFrames"></div>
+			<input type="text" id="chatInput" placeholder="Say something" />
+			<button id="sendButton" onClick={this.handleSend} >Send</button>
+			<div id="chat"></div>
 		    </div> 
 		);	
 	}

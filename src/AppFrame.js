@@ -3,6 +3,7 @@ import store from 'store';
 import { Switch, Route, Link, withRouter } from 'react-router-dom';
 
 import Ticket from './Ticket';
+import Rtc from './Rtc';
 
 //some test content for tickets
 
@@ -26,7 +27,7 @@ let data = [
 const TicketList = (props) => { //TODO assign a key prop to each item
   return (
     <div>
-      {props.tickets.map( ticket => <Ticket {... ticket} />)}
+      {props.tickets.map( (ticket, index)  => <Ticket key={index} {... ticket} />)}
     </div>
   );
 };
@@ -79,6 +80,7 @@ const Middle = () => (
           <Route exact path='/' component={LiveFeed}/>
           <Route path='/logs' component={ViewLogs}/>
           <Route path='/users' component={UserManagement}/>
+          <Route path="/rtc" component = {Rtc} /> 
       </Switch>
   </div>
 )
