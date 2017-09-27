@@ -11854,6 +11854,16 @@ var _Login2 = _interopRequireDefault(_Login);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import Rtc from './Rtc';
+
+var Test = function Test() {
+  _react2.default.createElement(
+    'p',
+    null,
+    'TEST'
+  );
+};
+
 var App = function App() {
   return _react2.default.createElement(
     _reactRouterDom.BrowserRouter,
@@ -11862,11 +11872,12 @@ var App = function App() {
       _reactRouterDom.Switch,
       null,
       _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _Login2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _AppFrame2.default })
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _AppFrame2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/rtc', component: Test })
     )
   );
 };
-_store2.default.set('loggedIn', false);
+_store2.default.set('loggedIn', true); //TODO DONT FORGET TO CHANGE
 var destination = document.getElementById("app");
 
 _reactDom2.default.render(_react2.default.createElement(App, null), destination);
@@ -28316,10 +28327,21 @@ var data = [{
   desc: "I miss my preciousss"
 }];
 
+var TicketList = function TicketList(props) {
+  //TODO assign a key prop to each item
+  return _react2.default.createElement(
+    'div',
+    null,
+    props.tickets.map(function (ticket) {
+      return _react2.default.createElement(_Ticket2.default, ticket);
+    })
+  );
+};
+
 //MAIN VIEWS -- these will be made into separate components
 
 var LiveFeed = function LiveFeed() {
-  return _react2.default.createElement(_Ticket2.default, { tickets: data });
+  return _react2.default.createElement(TicketList, { tickets: data });
 };
 
 var ViewLogs = function ViewLogs() {
@@ -28589,11 +28611,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(8);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(97);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var styles = {
   ticket: {
@@ -28611,54 +28643,82 @@ var styles = {
       username: {
         fontSize: '1.25em', fontWeight: 'bold'
       }
+    },
+    button: {
+      statusopen: {
+        right: '8px', top: '3px', float: 'right',
+        display: 'block', width: '68px', height: '34px',
+        outline: 'none', border: 'none', backgroundColor: 'lawngreen'
+      },
+      statusclosed: {
+        right: '8px', top: '3px', float: 'right',
+        display: 'block', width: '68px', height: '34px',
+        outline: 'none', border: 'none', backgroundColor: 'gray'
+      }
     }
   }
 };
 
-var Ticket = function Ticket(props) {
-  var open = true;
-  return _react2.default.createElement(
-    'div',
-    { style: styles.ticket },
-    _react2.default.createElement(
-      'div',
-      { style: props.status === 'open' ? styles.ticket.status.open : styles.ticket.status.closed },
-      _react2.default.createElement('img', { width: '75', src: props.avatar }),
-      _react2.default.createElement(
+var Ticket = function (_React$Component) {
+  _inherits(Ticket, _React$Component);
+
+  function Ticket() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Ticket);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Ticket.__proto__ || Object.getPrototypeOf(Ticket)).call.apply(_ref, [this].concat(args))), _this), _this.handleClick = function (ev) {
+      ev.preventDefault();
+      _this.props.history.push("/rtc");
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Ticket, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
         'div',
-        { style: styles.ticket.fields },
+        { style: styles.ticket },
+        _react2.default.createElement('button', { style: this.props.status === 'open' ? styles.ticket.button.statusopen : styles.ticket.button.statusclosed,
+          onClick: this.handleClick }),
         _react2.default.createElement(
           'div',
-          { style: styles.ticket.fields.username },
-          props.username
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          props.timestamp
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          props.desc
+          { style: this.props.status === 'open' ? styles.ticket.status.open : styles.ticket.status.closed },
+          _react2.default.createElement('img', { width: '75', src: this.props.avatar }),
+          _react2.default.createElement(
+            'div',
+            { style: styles.ticket.fields },
+            _react2.default.createElement(
+              'div',
+              { style: styles.ticket.fields.username },
+              this.props.username
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              this.props.timestamp
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              this.props.desc
+            )
+          )
         )
-      )
-    )
-  );
-};
+      );
+    }
+  }]);
 
-var TicketList = function TicketList(props) {
-  //TODO assign a key prop to each item
-  return _react2.default.createElement(
-    'div',
-    null,
-    props.tickets.map(function (ticket) {
-      return _react2.default.createElement(Ticket, ticket);
-    })
-  );
-};
+  return Ticket;
+}(_react2.default.Component);
 
-exports.default = TicketList;
+exports.default = (0, _reactRouterDom.withRouter)(Ticket);
 
 /***/ }),
 /* 247 */

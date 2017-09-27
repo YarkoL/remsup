@@ -2,7 +2,7 @@ import React from 'react';
 import store from 'store';
 import { Switch, Route, Link, withRouter } from 'react-router-dom';
 
-import TicketList from './Ticket';
+import Ticket from './Ticket';
 
 //some test content for tickets
 
@@ -23,6 +23,13 @@ let data = [
   }
 ]
 
+const TicketList = (props) => { //TODO assign a key prop to each item
+  return (
+    <div>
+      {props.tickets.map( ticket => <Ticket {... ticket} />)}
+    </div>
+  );
+};
 
 //MAIN VIEWS -- these will be made into separate components
 

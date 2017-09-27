@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { withRouter } from 'react-router-dom';
 
 const styles = {
   ticket: {
@@ -16,35 +17,47 @@ const styles = {
       username : {
       	fontSize : '1.25em', fontWeight : 'bold'
       }
-    }
+    },
+    button : {
+      statusopen : {
+        right : '8px', top : '3px', float: 'right', 
+        display : 'block', width: '68px', height: '34px',
+        outline: 'none', border: 'none', backgroundColor : 'lawngreen'
+      },
+      statusclosed : {
+        right : '8px', top : '3px', float: 'right', 
+        display : 'block', width: '68px', height: '34px',
+        outline: 'none', border: 'none', backgroundColor : 'gray'
+      }
+    } 
   }
 }
 
+class Ticket extends React.Component {
+  
+  handleClick = (ev) => {
+    ev.preventDefault();
+    this.props.history.push("/rtc");
+  }
 
-const Ticket = (props) => {
-  var open = true;
-	return (
-  	<div style = {styles.ticket}>
-      <div style = {(props.status === 'open')? styles.ticket.status.open : styles.ticket.status.closed }>
-        <img width="75" src={props.avatar} /> 
-            <div style = {styles.ticket.fields}>
-              <div style = {styles.ticket.fields.username}>
-                {props.username}
-              </div>
-              <div>{props.timestamp}</div>
-              <div>{props.desc}</div>
-            </div>
-      </div>
-   </div>   
-  );
-};
+  render (){
+      return (
+        <div style = {styles.ticket}>
+         <button style = {(this.props.status === 'open')? styles.ticket.button.statusopen : styles.ticket.button.statusclosed }
+           onClick = {this.handleClick}/>
+          <div style = {(this.props.status === 'open')? styles.ticket.status.open : styles.ticket.status.closed }>
+            <img width="75" src={this.props.avatar} /> 
+                <div style = {styles.ticket.fields}>
+                  <div style = {styles.ticket.fields.username}>
+                    {this.props.username}
+                  </div>
+                  <div>{this.props.timestamp}</div>
+                  <div>{this.props.desc}</div>
+                </div>
+          </div>
+       </div>   
+    );    
+  }
+} 
 
-const TicketList = (props) => { //TODO assign a key prop to each item
-	return (
-  	<div>
-    	{props.tickets.map( ticket => <Ticket {... ticket} />)}
-    </div>
-  );
-};
-
-export default TicketList;
+export default withRouter(Ticket);
