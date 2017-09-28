@@ -13,18 +13,20 @@ let data = [
     status : "closed",
     username : "Bilbo",
     timestamp : "09/26/17 15:03",
-    desc: "I need to get out of this cave"
+    desc: "I need to get out of this cave",
+    session : "_bilbo"
   },
   {
     avatar : "https://placehold.it/75",
     status : "open",
     username : "Gollum",
     timestamp : "09/26/17 15:05",
-    desc: "I miss my preciousss"
+    desc: "I miss my preciousss",
+    session : "_gollum"
   }
 ]
 
-const TicketList = (props) => { //TODO assign a key prop to each item
+const TicketList = (props) => { 
   return (
     <div>
       {props.tickets.map( (ticket, index)  => <Ticket key={index} {... ticket} />)}
@@ -36,7 +38,6 @@ const TicketList = (props) => { //TODO assign a key prop to each item
 
 const LiveFeed = () => (
   <TicketList tickets={data} />
-
 )
 
 const ViewLogs = () => (
@@ -100,19 +101,16 @@ const Layout = () => (
   </div>
 )
 
-
 //APPFRAME CLASS
 
 class AppFrame extends React.Component {
    
   componentWillMount() {
     if (store.get('loggedIn') ===  true ) {
+      //we're OK let's just return
       return;
-      //TODO this construction is awkward but needed because the 
-      //key might not exist yet in store and because the style
-      //guidelines forbid the use of ! operator
     } else {
-  	  console.log ("You are not logged in.  Redirecting you to login form");
+  	  console.log ("Not logged in.  Redirecting to login form");
   	  this.redirectToLogin();
     }
   }
@@ -120,7 +118,7 @@ class AppFrame extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     store.set('loggedIn', false);
-    console.log ("set loggedin to false");
+    console.log ("Set loggedin to false");
     this.redirectToLogin();
   } 
 

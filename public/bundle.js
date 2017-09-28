@@ -11866,7 +11866,11 @@ var App = function App() {
     )
   );
 };
-_store2.default.set('loggedIn', true); //TODO DONT FORGET TO CHANGE
+
+//init store values
+_store2.default.set('loggedIn', true); //FOR DEV ONLY please don't ***FORGET*** to change this OK??
+_store2.default.set('session', null);
+
 var destination = document.getElementById("app");
 
 _reactDom2.default.render(_react2.default.createElement(App, null), destination);
@@ -28313,17 +28317,18 @@ var data = [{
   status: "closed",
   username: "Bilbo",
   timestamp: "09/26/17 15:03",
-  desc: "I need to get out of this cave"
+  desc: "I need to get out of this cave",
+  session: "_bilbo"
 }, {
   avatar: "https://placehold.it/75",
   status: "open",
   username: "Gollum",
   timestamp: "09/26/17 15:05",
-  desc: "I miss my preciousss"
+  desc: "I miss my preciousss",
+  session: "_gollum"
 }];
 
 var TicketList = function TicketList(props) {
-  //TODO assign a key prop to each item
   return _react2.default.createElement(
     'div',
     null,
@@ -28467,7 +28472,7 @@ var AppFrame = function (_React$Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AppFrame.__proto__ || Object.getPrototypeOf(AppFrame)).call.apply(_ref, [this].concat(args))), _this), _this.handleSubmit = function (event) {
       event.preventDefault();
       _store2.default.set('loggedIn', false);
-      console.log("set loggedin to false");
+      console.log("Set loggedin to false");
       _this.redirectToLogin();
     }, _this.redirectToLogin = function () {
       _this.props.history.push("/login");
@@ -28478,12 +28483,10 @@ var AppFrame = function (_React$Component) {
     key: 'componentWillMount',
     value: function componentWillMount() {
       if (_store2.default.get('loggedIn') === true) {
+        //we're OK let's just return
         return;
-        //TODO this construction is awkward but needed because the 
-        //key might not exist yet in store and because the style
-        //guidelines forbid the use of ! operator
       } else {
-        console.log("You are not logged in.  Redirecting you to login form");
+        console.log("Not logged in.  Redirecting to login form");
         this.redirectToLogin();
       }
     }
@@ -28524,6 +28527,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _store = __webpack_require__(59);
+
+var _store2 = _interopRequireDefault(_store);
 
 var _reactRouterDom = __webpack_require__(39);
 
@@ -28583,6 +28590,7 @@ var Ticket = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Ticket.__proto__ || Object.getPrototypeOf(Ticket)).call.apply(_ref, [this].concat(args))), _this), _this.handleClick = function (ev) {
       ev.preventDefault();
+      _store2.default.set('session', _this.props.session);
       _this.props.history.push("/rtc");
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -28757,6 +28765,10 @@ var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _store = __webpack_require__(59);
+
+var _store2 = _interopRequireDefault(_store);
+
 var _reactRouterDom = __webpack_require__(39);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -28770,40 +28782,48 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Rtc = function (_React$Component) {
 	_inherits(Rtc, _React$Component);
 
-	function Rtc() {
-		var _ref;
-
-		var _temp, _this, _ret;
-
+	function Rtc(props) {
 		_classCallCheck(this, Rtc);
 
-		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-			args[_key] = arguments[_key];
-		}
+		var _this = _possibleConstructorReturn(this, (Rtc.__proto__ || Object.getPrototypeOf(Rtc)).call(this, props));
 
-		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Rtc.__proto__ || Object.getPrototypeOf(Rtc)).call.apply(_ref, [this].concat(args))), _this), _this.handleSend = function (ev) {
+		_this.redirectToRoot = function () {
+			_this.props.history.push("/");
+		};
+
+		_this.handleSend = function (ev) {
 			ev.preventDefault();
 			console.log("RTC : pushed send button");
-		}, _this.handleStop = function (ev) {
+		};
+
+		_this.handleStop = function (ev) {
 			ev.preventDefault();
 			console.log("RTC : pushed stop button");
-		}, _temp), _possibleConstructorReturn(_this, _ret);
+			//TODO tear down session
+			_store2.default.set('session', null);
+			_this.redirectToRoot();
+		};
+
+		var session = null;
+
+		return _this;
 	}
 
-	/*	
- 	constructor(props) {
- 	    super(props);
- 
- 		this.state = {
- 	     
- 	    };
-   	}
- */
-
 	_createClass(Rtc, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.session = _store2.default.get('session');
+			if (this.session !== null) {
+				//we're OK let's just return
+				return;
+			} else {
+				alert("Invalid session!");
+				this.redirectToRoot();
+			}
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-
 			return _react2.default.createElement(
 				'div',
 				{ id: 'content' },
@@ -28812,7 +28832,13 @@ var Rtc = function (_React$Component) {
 					{ id: 'stopButton', onClick: this.handleStop },
 					'Stop'
 				),
-				_react2.default.createElement('div', { id: 'videoFrames' }),
+				_react2.default.createElement(
+					'div',
+					{ id: 'videoFrames' },
+					'* SESSION : ',
+					this.session,
+					' *'
+				),
 				_react2.default.createElement('input', { type: 'text', id: 'chatInput', placeholder: 'Say something' }),
 				_react2.default.createElement(
 					'button',

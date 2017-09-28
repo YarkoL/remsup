@@ -1,4 +1,5 @@
 import React from 'react'; 
+import store from 'store';
 import { withRouter } from 'react-router-dom';
 
 const styles = {
@@ -37,6 +38,7 @@ class Ticket extends React.Component {
   
   handleClick = (ev) => {
     ev.preventDefault();
+    store.set('session', this.props.session);
     this.props.history.push("/rtc");
   }
 
