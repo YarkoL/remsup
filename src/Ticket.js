@@ -38,7 +38,7 @@ class Ticket extends React.Component {
   
   handleClick = (ev) => {
     ev.preventDefault();
-    store.set('session', this.props.session);
+    store.set('room', this.props.room);
     this.props.history.push("/rtc");
   }
 

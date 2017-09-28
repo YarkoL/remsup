@@ -134,3 +134,10 @@ a:link, a:visited {
 a:hover, a:active {
    color: yellow;
 }
+
+.other {
+  color: green;
+}
+.system {
+  color: blue;
+}

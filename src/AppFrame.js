@@ -14,7 +14,7 @@ let data = [
     username : "Bilbo",
     timestamp : "09/26/17 15:03",
     desc: "I need to get out of this cave",
-    session : "_bilbo"
+    room : "_bilbo"
   },
   {
     avatar : "https://placehold.it/75",
@@ -22,7 +22,7 @@ let data = [
     username : "Gollum",
     timestamp : "09/26/17 15:05",
     desc: "I miss my preciousss",
-    session : "_gollum"
+    room : "_gollum"
   }
 ]
 

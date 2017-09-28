@@ -733,6 +733,16 @@ module.exports = ReactDOMComponentTree;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(20);
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -768,16 +778,6 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(20);
-
 
 /***/ }),
 /* 8 */
@@ -1460,7 +1460,7 @@ var CallbackQueue = __webpack_require__(77);
 var PooledClass = __webpack_require__(19);
 var ReactFeatureFlags = __webpack_require__(78);
 var ReactReconciler = __webpack_require__(22);
-var Transaction = __webpack_require__(34);
+var Transaction = __webpack_require__(36);
 
 var invariant = __webpack_require__(1);
 
@@ -2202,7 +2202,7 @@ var _assign = __webpack_require__(4);
 var ReactCurrentOwner = __webpack_require__(14);
 
 var warning = __webpack_require__(2);
-var canDefineProperty = __webpack_require__(31);
+var canDefineProperty = __webpack_require__(33);
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 var REACT_ELEMENT_TYPE = __webpack_require__(68);
@@ -2679,8 +2679,8 @@ var createFactory = ReactElement.createFactory;
 var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
-  var lowPriorityWarning = __webpack_require__(41);
-  var canDefineProperty = __webpack_require__(31);
+  var lowPriorityWarning = __webpack_require__(42);
+  var canDefineProperty = __webpack_require__(33);
   var ReactElementValidator = __webpack_require__(70);
   var didWarnPropTypesDeprecated = false;
   createElement = ReactElementValidator.createElement;
@@ -3016,10 +3016,10 @@ module.exports = ReactReconciler;
 
 
 
-var DOMNamespaces = __webpack_require__(49);
-var setInnerHTML = __webpack_require__(36);
+var DOMNamespaces = __webpack_require__(50);
+var setInnerHTML = __webpack_require__(38);
 
-var createMicrosoftUnsafeLocalFunction = __webpack_require__(50);
+var createMicrosoftUnsafeLocalFunction = __webpack_require__(51);
 var setTextContent = __webpack_require__(82);
 
 var ELEMENT_NODE_TYPE = 1;
@@ -3265,7 +3265,7 @@ function isObject(val) {
 
 
 var EventPluginHub = __webpack_require__(26);
-var EventPluginUtils = __webpack_require__(43);
+var EventPluginUtils = __webpack_require__(44);
 
 var accumulateInto = __webpack_require__(74);
 var forEachAccumulated = __webpack_require__(75);
@@ -3406,9 +3406,9 @@ module.exports = EventPropagators;
 
 var _prodInvariant = __webpack_require__(3);
 
-var EventPluginRegistry = __webpack_require__(33);
-var EventPluginUtils = __webpack_require__(43);
-var ReactErrorUtils = __webpack_require__(44);
+var EventPluginRegistry = __webpack_require__(35);
+var EventPluginUtils = __webpack_require__(44);
+var ReactErrorUtils = __webpack_require__(45);
 
 var accumulateInto = __webpack_require__(74);
 var forEachAccumulated = __webpack_require__(75);
@@ -3686,7 +3686,7 @@ module.exports = EventPluginHub;
 
 var SyntheticEvent = __webpack_require__(16);
 
-var getEventTarget = __webpack_require__(45);
+var getEventTarget = __webpack_require__(46);
 
 /**
  * @interface UIEvent
@@ -3786,6 +3786,77 @@ module.exports = ReactInstanceMap;
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var engine = __webpack_require__(206)
+
+var storages = __webpack_require__(208)
+var plugins = [__webpack_require__(215)]
+
+module.exports = engine.createStore(storages, plugins)
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(217);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(220);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(101);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(222);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(225);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(228);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(230);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(102);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(62);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(236);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(238);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(240);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(241);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -3850,7 +3921,7 @@ var createPath = exports.createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3921,7 +3992,7 @@ var createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3953,7 +4024,7 @@ module.exports = canDefineProperty;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3979,7 +4050,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4238,7 +4309,7 @@ module.exports = EventPluginRegistry;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4472,7 +4543,7 @@ module.exports = TransactionImpl;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4491,7 +4562,7 @@ module.exports = TransactionImpl;
 var SyntheticUIEvent = __webpack_require__(27);
 var ViewportMetrics = __webpack_require__(81);
 
-var getEventModifierState = __webpack_require__(47);
+var getEventModifierState = __webpack_require__(48);
 
 /**
  * @interface MouseEvent
@@ -4549,7 +4620,7 @@ SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 module.exports = SyntheticMouseEvent;
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4565,13 +4636,13 @@ module.exports = SyntheticMouseEvent;
 
 
 
-var ExecutionEnvironment = __webpack_require__(6);
-var DOMNamespaces = __webpack_require__(49);
+var ExecutionEnvironment = __webpack_require__(7);
+var DOMNamespaces = __webpack_require__(50);
 
 var WHITESPACE_TEST = /^[ \r\n\t\f]/;
 var NONVISIBLE_TEST = /<(!--|link|noscript|meta|script|style)[ \r\n\t\f\/>]/;
 
-var createMicrosoftUnsafeLocalFunction = __webpack_require__(50);
+var createMicrosoftUnsafeLocalFunction = __webpack_require__(51);
 
 // SVG temp container for IE lacking innerHTML
 var reusableSVGContainer;
@@ -4652,7 +4723,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = setInnerHTML;
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4779,7 +4850,7 @@ function escapeTextContentForBrowser(text) {
 module.exports = escapeTextContentForBrowser;
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4797,12 +4868,12 @@ module.exports = escapeTextContentForBrowser;
 
 var _assign = __webpack_require__(4);
 
-var EventPluginRegistry = __webpack_require__(33);
+var EventPluginRegistry = __webpack_require__(35);
 var ReactEventEmitterMixin = __webpack_require__(155);
 var ViewportMetrics = __webpack_require__(81);
 
 var getVendorPrefixedEventName = __webpack_require__(156);
-var isEventSupported = __webpack_require__(46);
+var isEventSupported = __webpack_require__(47);
 
 /**
  * Summary of `ReactBrowserEventEmitter` event handling:
@@ -5108,66 +5179,7 @@ var ReactBrowserEventEmitter = _assign({}, ReactEventEmitterMixin, {
 module.exports = ReactBrowserEventEmitter;
 
 /***/ }),
-/* 39 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(217);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(220);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(101);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(222);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(225);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(228);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(230);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(102);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(62);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(236);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(238);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(240);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(241);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5175,7 +5187,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return locationsAreEqual; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_resolve_pathname__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_value_equal__ = __webpack_require__(99);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__PathUtils__ = __webpack_require__(32);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
@@ -5243,7 +5255,7 @@ var locationsAreEqual = function locationsAreEqual(a, b) {
 };
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5314,7 +5326,7 @@ module.exports = lowPriorityWarning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5335,7 +5347,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5353,7 +5365,7 @@ module.exports = ReactPropTypesSecret;
 
 var _prodInvariant = __webpack_require__(3);
 
-var ReactErrorUtils = __webpack_require__(44);
+var ReactErrorUtils = __webpack_require__(45);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -5567,7 +5579,7 @@ module.exports = EventPluginUtils;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5649,7 +5661,7 @@ module.exports = ReactErrorUtils;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5689,7 +5701,7 @@ function getEventTarget(nativeEvent) {
 module.exports = getEventTarget;
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5705,7 +5717,7 @@ module.exports = getEventTarget;
 
 
 
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 var useHasFeature;
 if (ExecutionEnvironment.canUseDOM) {
@@ -5754,7 +5766,7 @@ function isEventSupported(eventNameSuffix, capture) {
 module.exports = isEventSupported;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5802,7 +5814,7 @@ function getEventModifierState(nativeEvent) {
 module.exports = getEventModifierState;
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5823,8 +5835,8 @@ var Danger = __webpack_require__(140);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactInstrumentation = __webpack_require__(11);
 
-var createMicrosoftUnsafeLocalFunction = __webpack_require__(50);
-var setInnerHTML = __webpack_require__(36);
+var createMicrosoftUnsafeLocalFunction = __webpack_require__(51);
+var setInnerHTML = __webpack_require__(38);
 var setTextContent = __webpack_require__(82);
 
 function getNodeAfter(parentNode, node) {
@@ -6034,7 +6046,7 @@ module.exports = DOMChildrenOperations;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6059,7 +6071,7 @@ var DOMNamespaces = {
 module.exports = DOMNamespaces;
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6096,7 +6108,7 @@ var createMicrosoftUnsafeLocalFunction = function (func) {
 module.exports = createMicrosoftUnsafeLocalFunction;
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6240,7 +6252,7 @@ module.exports = LinkedValueUtils;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6290,7 +6302,7 @@ module.exports = ReactComponentEnvironment;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6363,7 +6375,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6410,7 +6422,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 module.exports = shouldUpdateReactComponent;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6474,7 +6486,7 @@ var KeyEscapeUtils = {
 module.exports = KeyEscapeUtils;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6714,7 +6726,7 @@ module.exports = ReactUpdateQueue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7091,7 +7103,7 @@ module.exports = validateDOMNesting;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7146,18 +7158,6 @@ function getEventCharCode(nativeEvent) {
 module.exports = getEventCharCode;
 
 /***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var engine = __webpack_require__(206)
-
-var storages = __webpack_require__(208)
-var plugins = [__webpack_require__(215)]
-
-module.exports = engine.createStore(storages, plugins)
-
-
-/***/ }),
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7177,7 +7177,7 @@ var _valueEqual = __webpack_require__(99);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-var _PathUtils = __webpack_require__(29);
+var _PathUtils = __webpack_require__(31);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7352,7 +7352,7 @@ exports.default = createTransitionManager;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
@@ -7646,10 +7646,10 @@ var _prodInvariant = __webpack_require__(21),
 
 var ReactNoopUpdateQueue = __webpack_require__(67);
 
-var canDefineProperty = __webpack_require__(31);
-var emptyObject = __webpack_require__(32);
+var canDefineProperty = __webpack_require__(33);
+var emptyObject = __webpack_require__(34);
 var invariant = __webpack_require__(1);
-var lowPriorityWarning = __webpack_require__(41);
+var lowPriorityWarning = __webpack_require__(42);
 
 /**
  * Base class helpers for the updating state of a component.
@@ -7975,10 +7975,10 @@ var ReactElement = __webpack_require__(18);
 
 var checkReactTypeSpec = __webpack_require__(111);
 
-var canDefineProperty = __webpack_require__(31);
+var canDefineProperty = __webpack_require__(33);
 var getIteratorFn = __webpack_require__(69);
 var warning = __webpack_require__(2);
-var lowPriorityWarning = __webpack_require__(41);
+var lowPriorityWarning = __webpack_require__(42);
 
 function getDeclarationErrorAddendum() {
   if (ReactCurrentOwner.current) {
@@ -8254,7 +8254,7 @@ var emptyFunction = __webpack_require__(10);
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
 
-var ReactPropTypesSecret = __webpack_require__(42);
+var ReactPropTypesSecret = __webpack_require__(43);
 var checkPropTypes = __webpack_require__(115);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
@@ -8894,7 +8894,7 @@ module.exports = forEachAccumulated;
 
 
 
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 var contentKey = null;
 
@@ -9298,9 +9298,9 @@ module.exports = ViewportMetrics;
 
 
 
-var ExecutionEnvironment = __webpack_require__(6);
-var escapeTextContentForBrowser = __webpack_require__(37);
-var setInnerHTML = __webpack_require__(36);
+var ExecutionEnvironment = __webpack_require__(7);
+var escapeTextContentForBrowser = __webpack_require__(39);
+var setInnerHTML = __webpack_require__(38);
 
 /**
  * Set the textContent property of a node, ensuring that whitespace is preserved
@@ -9811,7 +9811,7 @@ module.exports = ReactPropTypesSecret;
 
 var _assign = __webpack_require__(4);
 
-var LinkedValueUtils = __webpack_require__(51);
+var LinkedValueUtils = __webpack_require__(52);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(15);
 
@@ -10312,7 +10312,7 @@ var REACT_ELEMENT_TYPE = __webpack_require__(166);
 
 var getIteratorFn = __webpack_require__(167);
 var invariant = __webpack_require__(1);
-var KeyEscapeUtils = __webpack_require__(55);
+var KeyEscapeUtils = __webpack_require__(56);
 var warning = __webpack_require__(2);
 
 var SEPARATOR = '.';
@@ -10747,7 +10747,7 @@ var _prodInvariant = __webpack_require__(3);
 var DOMLazyTree = __webpack_require__(23);
 var DOMProperty = __webpack_require__(17);
 var React = __webpack_require__(20);
-var ReactBrowserEventEmitter = __webpack_require__(38);
+var ReactBrowserEventEmitter = __webpack_require__(40);
 var ReactCurrentOwner = __webpack_require__(14);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMContainerInfo = __webpack_require__(196);
@@ -10757,14 +10757,14 @@ var ReactInstanceMap = __webpack_require__(28);
 var ReactInstrumentation = __webpack_require__(11);
 var ReactMarkupChecksum = __webpack_require__(198);
 var ReactReconciler = __webpack_require__(22);
-var ReactUpdateQueue = __webpack_require__(56);
+var ReactUpdateQueue = __webpack_require__(57);
 var ReactUpdates = __webpack_require__(15);
 
-var emptyObject = __webpack_require__(32);
+var emptyObject = __webpack_require__(34);
 var instantiateReactComponent = __webpack_require__(88);
 var invariant = __webpack_require__(1);
-var setInnerHTML = __webpack_require__(36);
-var shouldUpdateReactComponent = __webpack_require__(54);
+var setInnerHTML = __webpack_require__(38);
+var shouldUpdateReactComponent = __webpack_require__(55);
 var warning = __webpack_require__(2);
 
 var ATTR_NAME = DOMProperty.ID_ATTRIBUTE_NAME;
@@ -11492,7 +11492,7 @@ var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isE
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
@@ -11617,7 +11617,7 @@ Link.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
@@ -11830,7 +11830,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 "use strict";
 
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -11838,17 +11838,17 @@ var _reactDom = __webpack_require__(120);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _store = __webpack_require__(59);
+var _store = __webpack_require__(29);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _reactRouterDom = __webpack_require__(39);
+var _reactRouterDom = __webpack_require__(30);
 
 var _AppFrame = __webpack_require__(244);
 
 var _AppFrame2 = _interopRequireDefault(_AppFrame);
 
-var _Login = __webpack_require__(250);
+var _Login = __webpack_require__(251);
 
 var _Login2 = _interopRequireDefault(_Login);
 
@@ -11869,7 +11869,7 @@ var App = function App() {
 
 //init store values
 _store2.default.set('loggedIn', true); //FOR DEV ONLY please don't ***FORGET*** to change this OK??
-_store2.default.set('session', null);
+_store2.default.set('room', null);
 
 var destination = document.getElementById("app");
 
@@ -12799,7 +12799,7 @@ module.exports = factory(isValidElement);
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(1);
   var warning = __webpack_require__(2);
-  var ReactPropTypesSecret = __webpack_require__(42);
+  var ReactPropTypesSecret = __webpack_require__(43);
   var loggedTypeFailures = {};
 }
 
@@ -12915,7 +12915,7 @@ module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
 
 var _assign = __webpack_require__(4);
 
-var emptyObject = __webpack_require__(32);
+var emptyObject = __webpack_require__(34);
 var _invariant = __webpack_require__(1);
 
 if (process.env.NODE_ENV !== 'production') {
@@ -13899,7 +13899,7 @@ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVT
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  var ExecutionEnvironment = __webpack_require__(6);
+  var ExecutionEnvironment = __webpack_require__(7);
   if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
     // First check if devtools is not installed
     if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined') {
@@ -14135,7 +14135,7 @@ module.exports = ARIADOMPropertyConfig;
 
 
 var EventPropagators = __webpack_require__(25);
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 var FallbackCompositionState = __webpack_require__(125);
 var SyntheticCompositionEvent = __webpack_require__(126);
 var SyntheticInputEvent = __webpack_require__(127);
@@ -14708,14 +14708,14 @@ module.exports = SyntheticInputEvent;
 
 var EventPluginHub = __webpack_require__(26);
 var EventPropagators = __webpack_require__(25);
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(15);
 var SyntheticEvent = __webpack_require__(16);
 
 var inputValueTracking = __webpack_require__(79);
-var getEventTarget = __webpack_require__(45);
-var isEventSupported = __webpack_require__(46);
+var getEventTarget = __webpack_require__(46);
+var isEventSupported = __webpack_require__(47);
 var isTextInputElement = __webpack_require__(80);
 
 var eventTypes = {
@@ -15220,7 +15220,7 @@ module.exports = ReactOwner;
 var ReactInvalidSetStateWarningHook = __webpack_require__(132);
 var ReactHostOperationHistoryHook = __webpack_require__(133);
 var ReactComponentTreeHook = __webpack_require__(9);
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 var performanceNow = __webpack_require__(134);
 var warning = __webpack_require__(2);
@@ -15705,7 +15705,7 @@ module.exports = performanceNow;
 
 
 
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 var performance;
 
@@ -15765,7 +15765,7 @@ module.exports = DefaultEventPluginOrder;
 
 var EventPropagators = __webpack_require__(25);
 var ReactDOMComponentTree = __webpack_require__(5);
-var SyntheticMouseEvent = __webpack_require__(35);
+var SyntheticMouseEvent = __webpack_require__(37);
 
 var eventTypes = {
   mouseEnter: {
@@ -16107,7 +16107,7 @@ module.exports = HTMLDOMPropertyConfig;
 
 
 
-var DOMChildrenOperations = __webpack_require__(48);
+var DOMChildrenOperations = __webpack_require__(49);
 var ReactDOMIDOperations = __webpack_require__(144);
 
 /**
@@ -16143,7 +16143,7 @@ module.exports = ReactComponentBrowserEnvironment;
 var _prodInvariant = __webpack_require__(3);
 
 var DOMLazyTree = __webpack_require__(23);
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 var createNodesFromMarkup = __webpack_require__(141);
 var emptyFunction = __webpack_require__(10);
@@ -16195,7 +16195,7 @@ module.exports = Danger;
 
 /*eslint-disable fb-www/unsafe-html*/
 
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 var createArrayFromMixed = __webpack_require__(142);
 var getMarkupWrap = __webpack_require__(143);
@@ -16417,7 +16417,7 @@ module.exports = createArrayFromMixed;
 
 /*eslint-disable fb-www/unsafe-html */
 
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 var invariant = __webpack_require__(1);
 
@@ -16516,7 +16516,7 @@ module.exports = getMarkupWrap;
 
 
 
-var DOMChildrenOperations = __webpack_require__(48);
+var DOMChildrenOperations = __webpack_require__(49);
 var ReactDOMComponentTree = __webpack_require__(5);
 
 /**
@@ -16562,12 +16562,12 @@ var _prodInvariant = __webpack_require__(3),
 var AutoFocusUtils = __webpack_require__(146);
 var CSSPropertyOperations = __webpack_require__(147);
 var DOMLazyTree = __webpack_require__(23);
-var DOMNamespaces = __webpack_require__(49);
+var DOMNamespaces = __webpack_require__(50);
 var DOMProperty = __webpack_require__(17);
 var DOMPropertyOperations = __webpack_require__(85);
 var EventPluginHub = __webpack_require__(26);
-var EventPluginRegistry = __webpack_require__(33);
-var ReactBrowserEventEmitter = __webpack_require__(38);
+var EventPluginRegistry = __webpack_require__(35);
+var ReactBrowserEventEmitter = __webpack_require__(40);
 var ReactDOMComponentFlags = __webpack_require__(73);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMInput = __webpack_require__(157);
@@ -16579,12 +16579,12 @@ var ReactMultiChild = __webpack_require__(160);
 var ReactServerRenderingTransaction = __webpack_require__(169);
 
 var emptyFunction = __webpack_require__(10);
-var escapeTextContentForBrowser = __webpack_require__(37);
+var escapeTextContentForBrowser = __webpack_require__(39);
 var invariant = __webpack_require__(1);
-var isEventSupported = __webpack_require__(46);
-var shallowEqual = __webpack_require__(53);
+var isEventSupported = __webpack_require__(47);
+var shallowEqual = __webpack_require__(54);
 var inputValueTracking = __webpack_require__(79);
-var validateDOMNesting = __webpack_require__(57);
+var validateDOMNesting = __webpack_require__(58);
 var warning = __webpack_require__(2);
 
 var Flags = ReactDOMComponentFlags;
@@ -17600,7 +17600,7 @@ module.exports = AutoFocusUtils;
 
 
 var CSSProperty = __webpack_require__(84);
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 var ReactInstrumentation = __webpack_require__(11);
 
 var camelizeStyleName = __webpack_require__(148);
@@ -18104,7 +18104,7 @@ module.exports = memoizeStringOnly;
 
 
 
-var escapeTextContentForBrowser = __webpack_require__(37);
+var escapeTextContentForBrowser = __webpack_require__(39);
 
 /**
  * Escapes attribute value to prevent scripting attacks.
@@ -18172,7 +18172,7 @@ module.exports = ReactEventEmitterMixin;
 
 
 
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 /**
  * Generate a mapping of standard vendor prefixes using the defined style property and event name.
@@ -18282,7 +18282,7 @@ var _prodInvariant = __webpack_require__(3),
     _assign = __webpack_require__(4);
 
 var DOMPropertyOperations = __webpack_require__(85);
-var LinkedValueUtils = __webpack_require__(51);
+var LinkedValueUtils = __webpack_require__(52);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(15);
 
@@ -18702,7 +18702,7 @@ module.exports = ReactDOMOption;
 var _prodInvariant = __webpack_require__(3),
     _assign = __webpack_require__(4);
 
-var LinkedValueUtils = __webpack_require__(51);
+var LinkedValueUtils = __webpack_require__(52);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(15);
 
@@ -18867,7 +18867,7 @@ module.exports = ReactDOMTextarea;
 
 var _prodInvariant = __webpack_require__(3);
 
-var ReactComponentEnvironment = __webpack_require__(52);
+var ReactComponentEnvironment = __webpack_require__(53);
 var ReactInstanceMap = __webpack_require__(28);
 var ReactInstrumentation = __webpack_require__(11);
 
@@ -19320,8 +19320,8 @@ module.exports = ReactMultiChild;
 var ReactReconciler = __webpack_require__(22);
 
 var instantiateReactComponent = __webpack_require__(88);
-var KeyEscapeUtils = __webpack_require__(55);
-var shouldUpdateReactComponent = __webpack_require__(54);
+var KeyEscapeUtils = __webpack_require__(56);
+var shouldUpdateReactComponent = __webpack_require__(55);
 var traverseAllChildren = __webpack_require__(92);
 var warning = __webpack_require__(2);
 
@@ -19480,9 +19480,9 @@ var _prodInvariant = __webpack_require__(3),
     _assign = __webpack_require__(4);
 
 var React = __webpack_require__(20);
-var ReactComponentEnvironment = __webpack_require__(52);
+var ReactComponentEnvironment = __webpack_require__(53);
 var ReactCurrentOwner = __webpack_require__(14);
-var ReactErrorUtils = __webpack_require__(44);
+var ReactErrorUtils = __webpack_require__(45);
 var ReactInstanceMap = __webpack_require__(28);
 var ReactInstrumentation = __webpack_require__(11);
 var ReactNodeTypes = __webpack_require__(89);
@@ -19492,10 +19492,10 @@ if (process.env.NODE_ENV !== 'production') {
   var checkReactTypeSpec = __webpack_require__(163);
 }
 
-var emptyObject = __webpack_require__(32);
+var emptyObject = __webpack_require__(34);
 var invariant = __webpack_require__(1);
-var shallowEqual = __webpack_require__(53);
-var shouldUpdateReactComponent = __webpack_require__(54);
+var shallowEqual = __webpack_require__(54);
+var shouldUpdateReactComponent = __webpack_require__(55);
 var warning = __webpack_require__(2);
 
 var CompositeTypes = {
@@ -20604,7 +20604,7 @@ module.exports = getIteratorFn;
 
 
 
-var KeyEscapeUtils = __webpack_require__(55);
+var KeyEscapeUtils = __webpack_require__(56);
 var traverseAllChildren = __webpack_require__(92);
 var warning = __webpack_require__(2);
 
@@ -20688,7 +20688,7 @@ module.exports = flattenChildren;
 var _assign = __webpack_require__(4);
 
 var PooledClass = __webpack_require__(19);
-var Transaction = __webpack_require__(34);
+var Transaction = __webpack_require__(36);
 var ReactInstrumentation = __webpack_require__(11);
 var ReactServerUpdateQueue = __webpack_require__(170);
 
@@ -20784,7 +20784,7 @@ module.exports = ReactServerRenderingTransaction;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ReactUpdateQueue = __webpack_require__(56);
+var ReactUpdateQueue = __webpack_require__(57);
 
 var warning = __webpack_require__(2);
 
@@ -21136,13 +21136,13 @@ module.exports = {
 var _prodInvariant = __webpack_require__(3),
     _assign = __webpack_require__(4);
 
-var DOMChildrenOperations = __webpack_require__(48);
+var DOMChildrenOperations = __webpack_require__(49);
 var DOMLazyTree = __webpack_require__(23);
 var ReactDOMComponentTree = __webpack_require__(5);
 
-var escapeTextContentForBrowser = __webpack_require__(37);
+var escapeTextContentForBrowser = __webpack_require__(39);
 var invariant = __webpack_require__(1);
-var validateDOMNesting = __webpack_require__(57);
+var validateDOMNesting = __webpack_require__(58);
 
 /**
  * Text nodes violate a couple assumptions that React makes about components:
@@ -21304,7 +21304,7 @@ module.exports = ReactDOMTextComponent;
 var _assign = __webpack_require__(4);
 
 var ReactUpdates = __webpack_require__(15);
-var Transaction = __webpack_require__(34);
+var Transaction = __webpack_require__(36);
 
 var emptyFunction = __webpack_require__(10);
 
@@ -21377,12 +21377,12 @@ module.exports = ReactDefaultBatchingStrategy;
 var _assign = __webpack_require__(4);
 
 var EventListener = __webpack_require__(93);
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 var PooledClass = __webpack_require__(19);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(15);
 
-var getEventTarget = __webpack_require__(45);
+var getEventTarget = __webpack_require__(46);
 var getUnboundedScrollPosition = __webpack_require__(176);
 
 /**
@@ -21580,10 +21580,10 @@ module.exports = getUnboundedScrollPosition;
 
 var DOMProperty = __webpack_require__(17);
 var EventPluginHub = __webpack_require__(26);
-var EventPluginUtils = __webpack_require__(43);
-var ReactComponentEnvironment = __webpack_require__(52);
+var EventPluginUtils = __webpack_require__(44);
+var ReactComponentEnvironment = __webpack_require__(53);
 var ReactEmptyComponent = __webpack_require__(90);
-var ReactBrowserEventEmitter = __webpack_require__(38);
+var ReactBrowserEventEmitter = __webpack_require__(40);
 var ReactHostComponent = __webpack_require__(91);
 var ReactUpdates = __webpack_require__(15);
 
@@ -21621,11 +21621,11 @@ var _assign = __webpack_require__(4);
 
 var CallbackQueue = __webpack_require__(77);
 var PooledClass = __webpack_require__(19);
-var ReactBrowserEventEmitter = __webpack_require__(38);
+var ReactBrowserEventEmitter = __webpack_require__(40);
 var ReactInputSelection = __webpack_require__(94);
 var ReactInstrumentation = __webpack_require__(11);
-var Transaction = __webpack_require__(34);
-var ReactUpdateQueue = __webpack_require__(56);
+var Transaction = __webpack_require__(36);
+var ReactUpdateQueue = __webpack_require__(57);
 
 /**
  * Ensures that, when possible, the selection range (currently selected text
@@ -21801,7 +21801,7 @@ module.exports = ReactReconcileTransaction;
 
 
 
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 
 var getNodeForCharacterOffset = __webpack_require__(180);
 var getTextContentAccessor = __webpack_require__(76);
@@ -22510,14 +22510,14 @@ module.exports = SVGDOMPropertyConfig;
 
 
 var EventPropagators = __webpack_require__(25);
-var ExecutionEnvironment = __webpack_require__(6);
+var ExecutionEnvironment = __webpack_require__(7);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactInputSelection = __webpack_require__(94);
 var SyntheticEvent = __webpack_require__(16);
 
 var getActiveElement = __webpack_require__(95);
 var isTextInputElement = __webpack_require__(80);
-var shallowEqual = __webpack_require__(53);
+var shallowEqual = __webpack_require__(54);
 
 var skipSelectionChangeEvent = ExecutionEnvironment.canUseDOM && 'documentMode' in document && document.documentMode <= 11;
 
@@ -22713,7 +22713,7 @@ var SyntheticClipboardEvent = __webpack_require__(188);
 var SyntheticEvent = __webpack_require__(16);
 var SyntheticFocusEvent = __webpack_require__(189);
 var SyntheticKeyboardEvent = __webpack_require__(190);
-var SyntheticMouseEvent = __webpack_require__(35);
+var SyntheticMouseEvent = __webpack_require__(37);
 var SyntheticDragEvent = __webpack_require__(192);
 var SyntheticTouchEvent = __webpack_require__(193);
 var SyntheticTransitionEvent = __webpack_require__(194);
@@ -22721,7 +22721,7 @@ var SyntheticUIEvent = __webpack_require__(27);
 var SyntheticWheelEvent = __webpack_require__(195);
 
 var emptyFunction = __webpack_require__(10);
-var getEventCharCode = __webpack_require__(58);
+var getEventCharCode = __webpack_require__(59);
 var invariant = __webpack_require__(1);
 
 /**
@@ -23064,9 +23064,9 @@ module.exports = SyntheticFocusEvent;
 
 var SyntheticUIEvent = __webpack_require__(27);
 
-var getEventCharCode = __webpack_require__(58);
+var getEventCharCode = __webpack_require__(59);
 var getEventKey = __webpack_require__(191);
-var getEventModifierState = __webpack_require__(47);
+var getEventModifierState = __webpack_require__(48);
 
 /**
  * @interface KeyboardEvent
@@ -23151,7 +23151,7 @@ module.exports = SyntheticKeyboardEvent;
 
 
 
-var getEventCharCode = __webpack_require__(58);
+var getEventCharCode = __webpack_require__(59);
 
 /**
  * Normalization of deprecated HTML5 `key` values
@@ -23268,7 +23268,7 @@ module.exports = getEventKey;
 
 
 
-var SyntheticMouseEvent = __webpack_require__(35);
+var SyntheticMouseEvent = __webpack_require__(37);
 
 /**
  * @interface DragEvent
@@ -23311,7 +23311,7 @@ module.exports = SyntheticDragEvent;
 
 var SyntheticUIEvent = __webpack_require__(27);
 
-var getEventModifierState = __webpack_require__(47);
+var getEventModifierState = __webpack_require__(48);
 
 /**
  * @interface TouchEvent
@@ -23403,7 +23403,7 @@ module.exports = SyntheticTransitionEvent;
 
 
 
-var SyntheticMouseEvent = __webpack_require__(35);
+var SyntheticMouseEvent = __webpack_require__(37);
 
 /**
  * @interface WheelEvent
@@ -23459,7 +23459,7 @@ module.exports = SyntheticWheelEvent;
 
 
 
-var validateDOMNesting = __webpack_require__(57);
+var validateDOMNesting = __webpack_require__(58);
 
 var DOC_NODE_TYPE = 9;
 
@@ -23733,7 +23733,7 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 
 
 var DOMProperty = __webpack_require__(17);
-var EventPluginRegistry = __webpack_require__(33);
+var EventPluginRegistry = __webpack_require__(35);
 var ReactComponentTreeHook = __webpack_require__(9);
 
 var warning = __webpack_require__(2);
@@ -25179,7 +25179,7 @@ if (typeof JSON !== "object") {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
@@ -25257,7 +25257,7 @@ BrowserRouter.propTypes = {
 
 var emptyFunction = __webpack_require__(10);
 var invariant = __webpack_require__(1);
-var ReactPropTypesSecret = __webpack_require__(42);
+var ReactPropTypesSecret = __webpack_require__(43);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -25328,7 +25328,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(60);
 
-var _PathUtils = __webpack_require__(29);
+var _PathUtils = __webpack_require__(31);
 
 var _createTransitionManager = __webpack_require__(61);
 
@@ -25625,7 +25625,7 @@ exports.default = createBrowserHistory;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
@@ -25705,7 +25705,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(60);
 
-var _PathUtils = __webpack_require__(29);
+var _PathUtils = __webpack_require__(31);
 
 var _createTransitionManager = __webpack_require__(61);
 
@@ -26032,7 +26032,7 @@ exports.default = createHashHistory;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prop_types__);
@@ -26109,7 +26109,7 @@ var _warning = __webpack_require__(8);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _PathUtils = __webpack_require__(29);
+var _PathUtils = __webpack_require__(31);
 
 var _LocationUtils = __webpack_require__(60);
 
@@ -26273,7 +26273,7 @@ exports.default = createMemoryHistory;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
@@ -26806,7 +26806,7 @@ module.exports = Array.isArray || function (arr) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
@@ -26908,7 +26908,7 @@ Prompt.contextTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
@@ -27022,10 +27022,10 @@ Redirect.contextTypes = {
 /* unused harmony reexport createHashHistory */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createMemoryHistory__ = __webpack_require__(235);
 /* unused harmony reexport createMemoryHistory */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__LocationUtils__ = __webpack_require__(41);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__LocationUtils__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PathUtils__ = __webpack_require__(32);
 /* unused harmony reexport parsePath */
 /* unused harmony reexport createPath */
 
@@ -27047,8 +27047,8 @@ Redirect.contextTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(104);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -27351,8 +27351,8 @@ var createBrowserHistory = function createBrowserHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PathUtils__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__createTransitionManager__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__DOMUtils__ = __webpack_require__(104);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -27670,8 +27670,8 @@ var createHashHistory = function createHashHistory() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PathUtils__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__LocationUtils__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createTransitionManager__ = __webpack_require__(65);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -27851,11 +27851,11 @@ var createMemoryHistory = function createMemoryHistory() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_warning___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_warning__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_invariant___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_invariant__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_history_PathUtils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_history_PathUtils__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Router__ = __webpack_require__(63);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -28041,7 +28041,7 @@ StaticRouter.childContextTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
@@ -28157,7 +28157,7 @@ Switch.propTypes = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
@@ -28284,21 +28284,21 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _store = __webpack_require__(59);
+var _store = __webpack_require__(29);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _reactRouterDom = __webpack_require__(39);
+var _reactRouterDom = __webpack_require__(30);
 
 var _Ticket = __webpack_require__(245);
 
 var _Ticket2 = _interopRequireDefault(_Ticket);
 
-var _Rtc = __webpack_require__(251);
+var _Rtc = __webpack_require__(246);
 
 var _Rtc2 = _interopRequireDefault(_Rtc);
 
@@ -28318,14 +28318,14 @@ var data = [{
   username: "Bilbo",
   timestamp: "09/26/17 15:03",
   desc: "I need to get out of this cave",
-  session: "_bilbo"
+  room: "_bilbo"
 }, {
   avatar: "https://placehold.it/75",
   status: "open",
   username: "Gollum",
   timestamp: "09/26/17 15:05",
   desc: "I miss my preciousss",
-  session: "_gollum"
+  room: "_gollum"
 }];
 
 var TicketList = function TicketList(props) {
@@ -28366,9 +28366,9 @@ var Header = function Header() {
   return _react2.default.createElement(
     'header',
     null,
-    _react2.default.createElement('img', { className: 'logo', src: __webpack_require__(246) }),
+    _react2.default.createElement('img', { className: 'logo', src: __webpack_require__(247) }),
     _react2.default.createElement('input', { placeholder: 'search/filter' }),
-    _react2.default.createElement('img', { className: 'icons', src: __webpack_require__(247) })
+    _react2.default.createElement('img', { className: 'icons', src: __webpack_require__(248) })
   );
 };
 
@@ -28376,7 +28376,7 @@ var Left = function Left() {
   return _react2.default.createElement(
     'div',
     { className: 'left' },
-    _react2.default.createElement('img', { className: 'center', src: __webpack_require__(248) }),
+    _react2.default.createElement('img', { className: 'center', src: __webpack_require__(249) }),
     _react2.default.createElement(
       'div',
       { id: 'buttons' },
@@ -28415,7 +28415,7 @@ var Left = function Left() {
         _react2.default.createElement('br', null)
       )
     ),
-    _react2.default.createElement('img', { className: 'brand', src: __webpack_require__(249) })
+    _react2.default.createElement('img', { className: 'brand', src: __webpack_require__(250) })
   );
 };
 
@@ -28524,15 +28524,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _store = __webpack_require__(59);
+var _store = __webpack_require__(29);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _reactRouterDom = __webpack_require__(39);
+var _reactRouterDom = __webpack_require__(30);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28590,7 +28590,7 @@ var Ticket = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Ticket.__proto__ || Object.getPrototypeOf(Ticket)).call.apply(_ref, [this].concat(args))), _this), _this.handleClick = function (ev) {
       ev.preventDefault();
-      _store2.default.set('session', _this.props.session);
+      _store2.default.set('room', _this.props.room);
       _this.props.history.push("/rtc");
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -28640,28 +28640,161 @@ exports.default = (0, _reactRouterDom.withRouter)(Ticket);
 /* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "/img/logo_75d568f.jpg";
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _store = __webpack_require__(29);
+
+var _store2 = _interopRequireDefault(_store);
+
+var _reactRouterDom = __webpack_require__(30);
+
+var _RtcPeer = __webpack_require__(253);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var styles = {
+	chat: {
+		padding: '5px',
+		backgroundColor: '#ded',
+		overflowY: 'scroll',
+		marginTop: '10px',
+		height: '150px',
+		width: '600px',
+		float: 'left'
+	}
+};
+
+var Rtc = function (_React$Component) {
+	_inherits(Rtc, _React$Component);
+
+	function Rtc(props) {
+		_classCallCheck(this, Rtc);
+
+		var _this = _possibleConstructorReturn(this, (Rtc.__proto__ || Object.getPrototypeOf(Rtc)).call(this, props));
+
+		_this.redirectToRoot = function () {
+			_this.props.history.push("/");
+		};
+
+		_this.handleSend = function (ev) {
+			ev.preventDefault();
+
+			_RtcPeer.rtcPeer.appendToChat("Hello there byb!");
+
+			console.log("RTC : pushed send button");
+		};
+
+		_this.handleStop = function (ev) {
+			ev.preventDefault();
+			console.log("RTC : pushed stop button");
+			//TODO tear down 
+			_store2.default.set('room', null);
+
+			_this.redirectToRoot();
+		};
+
+		var room = null;
+		return _this;
+	}
+
+	_createClass(Rtc, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.room = _store2.default.get('room');
+			if (this.room !== null) {
+				//we're OK let's start webrtc engine
+				//rtcPeer.run(room);
+
+			} else {
+				alert("Invalid room!");
+				this.redirectToRoot();
+			}
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			if (this.room !== null) {
+				_store2.default.set('room', null);
+			}
+			this.room = null;
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ id: 'content' },
+				_react2.default.createElement(
+					'button',
+					{ id: 'stopButton', onClick: this.handleStop },
+					'Stop'
+				),
+				_react2.default.createElement(
+					'div',
+					{ id: 'videoFrames' },
+					'* room : ',
+					this.room,
+					' *'
+				),
+				_react2.default.createElement('input', { type: 'text', id: 'chatInput', placeholder: 'Say something' }),
+				_react2.default.createElement(
+					'button',
+					{ id: 'sendButton', onClick: this.handleSend },
+					'Send'
+				),
+				_react2.default.createElement('div', { id: 'chat', style: styles.chat })
+			);
+		}
+	}]);
+
+	return Rtc;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRouterDom.withRouter)(Rtc);
 
 /***/ }),
 /* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "/img/icons-header_f418709.jpg";
+module.exports = __webpack_require__.p + "/img/logo_75d568f.jpg";
 
 /***/ }),
 /* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "/img/clock_2df5dbe.jpg";
+module.exports = __webpack_require__.p + "/img/icons-header_f418709.jpg";
 
 /***/ }),
 /* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "/img/brand_0cadb36.jpg";
+module.exports = __webpack_require__.p + "/img/clock_2df5dbe.jpg";
 
 /***/ }),
 /* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/img/brand_0cadb36.jpg";
+
+/***/ }),
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28673,15 +28806,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(7);
+var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _store = __webpack_require__(59);
+var _store = __webpack_require__(29);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _reactRouterDom = __webpack_require__(39);
+var _reactRouterDom = __webpack_require__(30);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28749,111 +28882,1256 @@ var Login = function (_React$Component) {
 exports.default = (0, _reactRouterDom.withRouter)(Login);
 
 /***/ }),
-/* 251 */
+/* 252 */,
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(7);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _store = __webpack_require__(59);
-
-var _store2 = _interopRequireDefault(_store);
-
-var _reactRouterDom = __webpack_require__(39);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+/*
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+*/
 
-var Rtc = function (_React$Component) {
-	_inherits(Rtc, _React$Component);
+var RtcPeer = exports.RtcPeer = function RtcPeer() {
+    _classCallCheck(this, RtcPeer);
 
-	function Rtc(props) {
-		_classCallCheck(this, Rtc);
+    this.sendButton = document.getElementById("sendButton");
+    this.chat = document.getElementById("chat");
 
-		var _this = _possibleConstructorReturn(this, (Rtc.__proto__ || Object.getPrototypeOf(Rtc)).call(this, props));
+    this.appendToChat = function (txt) {
+        var classId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'system';
 
-		_this.redirectToRoot = function () {
-			_this.props.history.push("/");
-		};
+        chat.innerHTML += "<span class = " + classId + "> " + txt + "</span><br>";
+    };
 
-		_this.handleSend = function (ev) {
-			ev.preventDefault();
-			console.log("RTC : pushed send button");
-		};
+    this.runPeer = function (room) {};
+};
 
-		_this.handleStop = function (ev) {
-			ev.preventDefault();
-			console.log("RTC : pushed stop button");
-			//TODO tear down session
-			_store2.default.set('session', null);
-			_this.redirectToRoot();
-		};
+;
 
-		var session = null;
+// see
+// https://k94n.com/es6-modules-single-instance-patternconst sendButton = document.getElementById("sendButton");
 
-		return _this;
-	}
+var rtcPeer = exports.rtcPeer = new RtcPeer();
 
-	_createClass(Rtc, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			this.session = _store2.default.get('session');
-			if (this.session !== null) {
-				//we're OK let's just return
-				return;
-			} else {
-				alert("Invalid session!");
-				this.redirectToRoot();
-			}
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ id: 'content' },
-				_react2.default.createElement(
-					'button',
-					{ id: 'stopButton', onClick: this.handleStop },
-					'Stop'
-				),
-				_react2.default.createElement(
-					'div',
-					{ id: 'videoFrames' },
-					'* SESSION : ',
-					this.session,
-					' *'
-				),
-				_react2.default.createElement('input', { type: 'text', id: 'chatInput', placeholder: 'Say something' }),
-				_react2.default.createElement(
-					'button',
-					{ id: 'sendButton', onClick: this.handleSend },
-					'Send'
-				),
-				_react2.default.createElement('div', { id: 'chat' })
-			);
-		}
-	}]);
+/*
+initialization
+*/
 
-	return Rtc;
-}(_react2.default.Component);
+//the main content div, used to append video in
+var content = document.getElementById("content");
 
-exports.default = (0, _reactRouterDom.withRouter)(Rtc);
+//stops the peer
+var stopButton = document.getElementById("stopButton");
+
+//string : input text message
+var chatInput = document.getElementById("chatInput");
+
+//two canvas elements, for local and remote. Video stream 
+//is rendered on them. See CreateFrame in FrameBuffer 
+var videoFrames = document.getElementById("videoFrames");
+
+//the call object, instance of BrowserWebRtcCall
+var rtcCall = null;
+
+/*
+startPeer
+- only needed because we need to clear up the chat window contents 
+outside the actual peer operation
+*/
+function startPeer() {
+    chat.innerHTML = "";
+    runPeer();
+}
+
+/*
+stopPeer 
+- disposes the existing call and does UI cleanup
+*/
+function stopPeer() {
+    if (rtcCall == false) {
+        appendToChat("Could not dispose peer", "system");
+    } else {
+        rtcCall.Dispose();
+    }
+    stopButton.disabled = true;
+    startButton.disabled = false;
+    chatInput.disabled = true;
+    sendButton.disabled = true;
+}
+
+/*
+sendText
+- read the input text form and clear
+*/
+function sendText() {
+    var message = chatInput.value;
+    appendToChat(message, "me");
+    rtcCall.Send(message);
+    console.log("sent message " + message);
+    chatInput.value = "";
+}
+
+function runPeer() {
+    var addr = addrInput.value;
+    if (addr == null) {
+        appendToChat("Please enter an address", "system");
+        return;
+    }
+    //TODO explain this
+    FrameBuffer.sUseLazyFrames = true;
+    var conf = new NetworkConfig();
+    conf.IsConference = isServerCheckBox.checked;
+
+    //display some info
+    appendToChat("Starting " + (conf.IsConference ? "server" : "client") + "...", "system");
+    console.log("Signaling url: " + conf.SignalingUrl);
+    appendToChat("Using address '" + addr + "'", "system");
+
+    rtcCall = new BrowserWebRtcCall(conf);
+
+    //UI element that contains the video, see SetupVideoElement 
+    var videoElement = null;
+    //array for videoelements containing active connections
+    var videoElements = {};
+
+    rtcCall.addEventListener(function (obj, event) {
+        stopPeer;
+        var evt = event;
+        switch (event.Type) {
+            case CallEventType.ConfigurationComplete:
+                //UI changes, opposite of stopPeer
+                stopButton.disabled = false;
+                startButton.disabled = true;
+                chatInput.disabled = false;
+                sendButton.disabled = false;
+                appendToChat("configuration complete", "system");
+                break;
+
+            case CallEventType.FrameUpdate:
+                videoElement = evt.Frame.FrameGenerator.VideoElement;
+
+                if (videoElement == null && evt.ConnectionId == ConnectionId.INVALID) {
+                    appendToChat("local video added", "system"); //TODO unclear if it ever goes in here
+                } else if (evt.ConnectionId != ConnectionId.INVALID && videoElements[evt.ConnectionId.id] == null) {
+                    appendToChat("remote video added", "system");
+                    videoElements[evt.ConnectionId.id] = videoElement;
+                }
+                videoFrames.appendChild(videoElement);
+                var linebreak = document.createElement("br");
+                content.appendChild(linebreak);
+                break;
+
+            case CallEventType.Message:
+                appendToChat(evt.Content, "other");
+                console.log("message from " + evt.ConnectionId.id + " : " + evt.Content);
+                break;
+
+            case CallEventType.ListeningFailed:
+                if (conf.IsConference == false) {
+                    rtcCall.Call(addr);
+                } else {
+                    appendToChat("Listening failed. Server dead?", "system");
+                }
+                break;
+
+            case CallEventType.CallEnded:
+                appendToChat("call ended with id " + evt.ConnectionId.id, "system");
+                videoElements[evt.ConnectionId.id] = null;
+                break;
+
+            case CallEventType.ConnectionFailed:
+                alert("Connection failed");
+                break;
+
+            default:
+                console.log("got unhandled event type " + event.Type);
+        }
+    });
+    setInterval(function () {
+        rtcCall.Update();
+    }, 50);
+    rtcCall.Configure(new MediaConfig());
+    rtcCall.Listen(addr);
+}
+
+//webrtcnetwork.js
+
+var __extends = undefined && undefined.__extends || function (e, t) {
+    for (var n in t) {
+        if (t.hasOwnProperty(n)) e[n] = t[n];
+    }function i() {
+        this.constructor = e;
+    }
+    e.prototype = t === null ? Object.create(t) : (i.prototype = t.prototype, new i());
+};
+
+var WebRtcNetworkServerState;
+(function (e) {
+    e[e["Invalid"] = 0] = "Invalid";
+    e[e["Offline"] = 1] = "Offline";
+    e[e["Starting"] = 2] = "Starting";
+    e[e["Online"] = 3] = "Online";
+})(WebRtcNetworkServerState || (WebRtcNetworkServerState = {}));
+
+var SignalingConfig = function () {
+    function e(e) {
+        this.mNetwork = e;
+    }
+    e.prototype.GetNetwork = function () {
+        return this.mNetwork;
+    };
+    return e;
+}();
+
+var SignalingInfo = function () {
+    function e(e, t, n) {
+        this.mConnectionId = e;
+        this.mIsIncoming = t;
+        this.mCreationTime = n;
+        this.mSignalingConnected = true;
+    }
+    e.prototype.IsSignalingConnected = function () {
+        return this.mSignalingConnected;
+    };
+    Object.defineProperty(e.prototype, "ConnectionId", {
+        get: function get() {
+            return this.mConnectionId;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    e.prototype.IsIncoming = function () {
+        return this.mIsIncoming;
+    };
+    e.prototype.GetCreationTimeMs = function () {
+        return Date.now() - this.mCreationTime;
+    };
+    e.prototype.SignalingDisconnected = function () {
+        this.mSignalingConnected = false;
+    };
+    return e;
+}();
+
+var WebRtcNetwork = function () {
+    function e(e, t) {
+        this.mTimeout = 6e4;
+        this.mInSignaling = {};
+        this.mNextId = new ConnectionId(1);
+        this.mSignaling = null;
+        this.mEvents = new Queue();
+        this.mIdToConnection = {};
+        this.mConnectionIds = new Array();
+        this.mServerState = WebRtcNetworkServerState.Offline;
+        this.mIsDisposed = false;
+        this.mSignaling = e;
+        this.mSignalingNetwork = this.mSignaling.GetNetwork();
+        this.mRtcConfig = t;
+    }
+    Object.defineProperty(e.prototype, "IdToConnection", {
+        get: function get() {
+            return this.mIdToConnection;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    e.prototype.GetConnections = function () {
+        return this.mConnectionIds;
+    };
+    e.prototype.SetLog = function (e) {
+        this.mLogDelegate = e;
+    };
+    e.prototype.StartServer = function (e) {
+        this.mServerState = WebRtcNetworkServerState.Starting;
+        this.mSignalingNetwork.StartServer(e);
+    };
+    e.prototype.StopServer = function () {
+        if (this.mServerState == WebRtcNetworkServerState.Starting) {
+            this.mSignalingNetwork.StopServer();
+        } else if (this.mServerState == WebRtcNetworkServerState.Online) {
+            this.mSignalingNetwork.StopServer();
+        }
+    };
+    e.prototype.Connect = function (e) {
+        console.log("Connecting ...");
+        return this.AddOutgoingConnection(e);
+    };
+    e.prototype.Update = function () {
+        this.CheckSignalingState();
+        this.UpdateSignalingNetwork();
+        this.UpdatePeers();
+    };
+    e.prototype.Dequeue = function () {
+        if (this.mEvents.Count() > 0) return this.mEvents.Dequeue();
+        return null;
+    };
+    e.prototype.Peek = function () {
+        if (this.mEvents.Count() > 0) return this.mEvents.Peek();
+        return null;
+    };
+    e.prototype.Flush = function () {
+        this.mSignalingNetwork.Flush();
+    };
+    e.prototype.SendData = function (e, t, n) {
+        if (e == null || t == null || t.length == 0) return;
+        var i = this.mIdToConnection[e.id];
+        if (i) {
+            i.SendData(t, n);
+        } else {
+            Debug.LogWarning("unknown connection id");
+        }
+    };
+    e.prototype.Disconnect = function (e) {
+        var t = this.mIdToConnection[e.id];
+        if (t) {
+            this.HandleDisconnect(e);
+        }
+    };
+    e.prototype.Shutdown = function () {
+        for (var e = 0, t = this.mConnectionIds; e < t.length; e++) {
+            var n = t[e];
+            this.Disconnect(n);
+        }
+        this.StopServer();
+        this.mSignalingNetwork.Shutdown();
+    };
+    e.prototype.DisposeInternal = function () {
+        if (this.mIsDisposed == false) {
+            this.Shutdown();
+            this.mIsDisposed = true;
+        }
+    };
+    e.prototype.Dispose = function () {
+        this.DisposeInternal();
+    };
+    e.prototype.CreatePeer = function (e, t) {
+        var n = new WebRtcDataPeer(e, t);
+        return n;
+    };
+    e.prototype.CheckSignalingState = function () {
+        var e = new Array();
+        var t = new Array();
+        for (var n in this.mInSignaling) {
+            var i = this.mInSignaling[n];
+            i.Update();
+            var o = i.SignalingInfo.GetCreationTimeMs();
+            var r = new Output();
+            while (i.DequeueSignalingMessage(r)) {
+                var a = this.StringToBuffer(r.val);
+                this.mSignalingNetwork.SendData(new ConnectionId(+n), a, true);
+            }
+            if (i.GetState() == WebRtcPeerState.Connected) {
+                e.push(i.SignalingInfo.ConnectionId);
+            } else if (i.GetState() == WebRtcPeerState.SignalingFailed || o > this.mTimeout) {
+                t.push(i.SignalingInfo.ConnectionId);
+            }
+        }
+        for (var s = 0, c = e; s < c.length; s++) {
+            var l = c[s];
+            this.ConnectionEstablished(l);
+        }
+        for (var u = 0, g = t; u < g.length; u++) {
+            var l = g[u];
+            this.SignalingFailed(l);
+        }
+    };
+    e.prototype.UpdateSignalingNetwork = function () {
+        this.mSignalingNetwork.Update();
+        var e;
+        while ((e = this.mSignalingNetwork.Dequeue()) != null) {
+            if (e.Type == NetEventType.ServerInitialized) {
+                this.mServerState = WebRtcNetworkServerState.Online;
+                this.mEvents.Enqueue(new NetworkEvent(NetEventType.ServerInitialized, ConnectionId.INVALID, e.RawData));
+            } else if (e.Type == NetEventType.ServerInitFailed) {
+                this.mServerState = WebRtcNetworkServerState.Offline;
+                this.mEvents.Enqueue(new NetworkEvent(NetEventType.ServerInitFailed, ConnectionId.INVALID, e.RawData));
+            } else if (e.Type == NetEventType.ServerClosed) {
+                this.mServerState = WebRtcNetworkServerState.Offline;
+                this.mEvents.Enqueue(new NetworkEvent(NetEventType.ServerClosed, ConnectionId.INVALID, e.RawData));
+            } else if (e.Type == NetEventType.NewConnection) {
+                var t = this.mInSignaling[e.ConnectionId.id];
+                if (t) {
+                    t.StartSignaling();
+                } else {
+                    this.AddIncomingConnection(e.ConnectionId);
+                }
+            } else if (e.Type == NetEventType.ConnectionFailed) {
+                this.SignalingFailed(e.ConnectionId);
+            } else if (e.Type == NetEventType.Disconnected) {
+                var t = this.mInSignaling[e.ConnectionId.id];
+                if (t) {
+                    t.SignalingInfo.SignalingDisconnected();
+                }
+            } else if (e.Type == NetEventType.ReliableMessageReceived) {
+                var t = this.mInSignaling[e.ConnectionId.id];
+                if (t) {
+                    var n = this.BufferToString(e.MessageData);
+                    t.AddSignalingMessage(n);
+                } else {
+                    Debug.LogWarning("Signaling message from unknown connection received");
+                }
+            }
+        }
+    };
+    e.prototype.UpdatePeers = function () {
+        var e = new Array();
+        for (var t in this.mIdToConnection) {
+            var n = this.mIdToConnection[t];
+            n.Update();
+            var i = new Output();
+            while (n.DequeueEvent(i)) {
+                this.mEvents.Enqueue(i.val);
+            }
+            if (n.GetState() == WebRtcPeerState.Closed) {
+                e.push(n.ConnectionId);
+            }
+        }
+        for (var o = 0, r = e; o < r.length; o++) {
+            var a = r[o];
+            this.HandleDisconnect(a);
+        }
+    };
+    e.prototype.AddOutgoingConnection = function (e) {
+        Debug.Log("new outgoing connection");
+        var t = this.mSignalingNetwork.Connect(e);
+        var n = new SignalingInfo(t, false, Date.now());
+        var i = this.CreatePeer(this.NextConnectionId(), this.mRtcConfig);
+        i.SetSignalingInfo(n);
+        this.mInSignaling[t.id] = i;
+        return i.ConnectionId;
+    };
+    e.prototype.AddIncomingConnection = function (e) {
+        Debug.Log("new incoming connection");
+        var t = new SignalingInfo(e, true, Date.now());
+        var n = this.CreatePeer(this.NextConnectionId(), this.mRtcConfig);
+        n.SetSignalingInfo(t);
+        this.mInSignaling[e.id] = n;
+        n.NegotiateSignaling();
+        return n.ConnectionId;
+    };
+    e.prototype.ConnectionEstablished = function (e) {
+        var t = this.mInSignaling[e.id];
+        delete this.mInSignaling[e.id];
+        this.mSignalingNetwork.Disconnect(e);
+        this.mConnectionIds.push(t.ConnectionId);
+        this.mIdToConnection[t.ConnectionId.id] = t;
+        this.mEvents.Enqueue(new NetworkEvent(NetEventType.NewConnection, t.ConnectionId, null));
+    };
+    e.prototype.SignalingFailed = function (e) {
+        var t = this.mInSignaling[e.id];
+        if (t) {
+            delete this.mInSignaling[e.id];
+            this.mEvents.Enqueue(new NetworkEvent(NetEventType.ConnectionFailed, t.ConnectionId, null));
+            if (t.SignalingInfo.IsSignalingConnected()) {
+                this.mSignalingNetwork.Disconnect(e);
+            }
+            t.Dispose();
+        }
+    };
+    e.prototype.HandleDisconnect = function (e) {
+        var t = this.mIdToConnection[e.id];
+        if (t) {
+            t.Dispose();
+        }
+        var n = this.mConnectionIds.indexOf(e);
+        if (n != -1) {
+            this.mConnectionIds.splice(n, 1);
+        }
+        delete this.mIdToConnection[e.id];
+        var i = new NetworkEvent(NetEventType.Disconnected, e, null);
+        this.mEvents.Enqueue(i);
+    };
+    e.prototype.NextConnectionId = function () {
+        var e = new ConnectionId(this.mNextId.id);
+        this.mNextId.id++;
+        return e;
+    };
+    e.prototype.StringToBuffer = function (e) {
+        var t = new ArrayBuffer(e.length * 2);
+        var n = new Uint16Array(t);
+        for (var i = 0, o = e.length; i < o; i++) {
+            n[i] = e.charCodeAt(i);
+        }
+        var r = new Uint8Array(t);
+        return r;
+    };
+    e.prototype.BufferToString = function (e) {
+        var t = new Uint16Array(e.buffer, e.byteOffset, e.byteLength / 2);
+        return String.fromCharCode.apply(null, t);
+    };
+    return e;
+}();
+
+var WebRtcPeerState;
+(function (e) {
+    e[e["Invalid"] = 0] = "Invalid";
+    e[e["Created"] = 1] = "Created";
+    e[e["Signaling"] = 2] = "Signaling";
+    e[e["SignalingFailed"] = 3] = "SignalingFailed";
+    e[e["Connected"] = 4] = "Connected";
+    e[e["Closing"] = 5] = "Closing";
+    e[e["Closed"] = 6] = "Closed";
+})(WebRtcPeerState || (WebRtcPeerState = {}));
+var WebRtcInternalState;
+(function (e) {
+    e[e["None"] = 0] = "None";
+    e[e["Signaling"] = 1] = "Signaling";
+    e[e["SignalingFailed"] = 2] = "SignalingFailed";
+    e[e["Connected"] = 3] = "Connected";
+    e[e["Closed"] = 4] = "Closed";
+})(WebRtcInternalState || (WebRtcInternalState = {}));
+
+var AWebRtcPeer = function () {
+    function e(e) {
+        this.mState = WebRtcPeerState.Invalid;
+        this.mRtcInternalState = WebRtcInternalState.None;
+        this.mIncomingSignalingQueue = new Queue();
+        this.mOutgoingSignalingQueue = new Queue();
+        this.mDidSendRandomNumber = false;
+        this.mRandomNumerSent = 0;
+        this.mOfferOptions = {
+            offerToReceiveAudio: 0,
+            offerToReceiveVideo: 0
+        };
+        this.gConnectionConfig = {
+            optional: [{
+                DtlsSrtpKeyAgreement: true
+            }]
+        };
+        this.SetupPeer(e);
+        this.OnSetup();
+        this.mState = WebRtcPeerState.Created;
+    }
+    e.prototype.GetState = function () {
+        return this.mState;
+    };
+    e.prototype.SetupPeer = function (e) {
+        var t = this;
+        var n = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+        this.mPeer = new n(e, this.gConnectionConfig);
+        this.mPeer.onicecandidate = function (e) {
+            t.OnIceCandidate(e);
+        };
+        this.mPeer.oniceconnectionstatechange = function (e) {
+            t.OnIceConnectionChange();
+        };
+        this.mPeer.onnegotiationneeded = function (e) {
+            t.OnRenegotiationNeeded();
+        };
+        this.mPeer.onsignalingstatechange = function (e) {
+            t.OnSignalingChange();
+        };
+    };
+    e.prototype.DisposeInternal = function () {
+        this.Cleanup();
+    };
+    e.prototype.Dispose = function () {
+        if (this.mPeer != null) {
+            this.DisposeInternal();
+        }
+    };
+    e.prototype.Cleanup = function () {
+        if (this.mState == WebRtcPeerState.Closed || this.mState == WebRtcPeerState.Closing) {
+            return;
+        }
+        this.mState = WebRtcPeerState.Closing;
+        this.OnCleanup();
+        if (this.mPeer != null) this.mPeer.close();
+        this.mState = WebRtcPeerState.Closed;
+    };
+    e.prototype.Update = function () {
+        if (this.mState != WebRtcPeerState.Closed && this.mState != WebRtcPeerState.Closing && this.mState != WebRtcPeerState.SignalingFailed) this.UpdateState();
+        if (this.mState == WebRtcPeerState.Signaling || this.mState == WebRtcPeerState.Created) this.HandleIncomingSignaling();
+    };
+    e.prototype.UpdateState = function () {
+        if (this.mRtcInternalState == WebRtcInternalState.Closed) {
+            this.Cleanup();
+        } else if (this.mRtcInternalState == WebRtcInternalState.SignalingFailed) {
+            this.mState = WebRtcPeerState.SignalingFailed;
+        } else if (this.mRtcInternalState == WebRtcInternalState.Connected) {
+            this.mState = WebRtcPeerState.Connected;
+        }
+    };
+    e.prototype.HandleIncomingSignaling = function () {
+        while (this.mIncomingSignalingQueue.Count() > 0) {
+            var e = this.mIncomingSignalingQueue.Dequeue();
+            var t = Helper.tryParseInt(e);
+            if (t != null) {
+                if (this.mDidSendRandomNumber) {
+                    if (t < this.mRandomNumerSent) {
+                        SLog.L("Signaling negotiation complete. Starting signaling.");
+                        this.StartSignaling();
+                    } else if (t == this.mRandomNumerSent) {
+                        this.NegotiateSignaling();
+                    } else {
+                        SLog.L("Signaling negotiation complete. Waiting for signaling.");
+                    }
+                } else {}
+            } else {
+                var n = JSON.parse(e);
+                if (n.sdp) {
+                    var i = new RTCSessionDescription(n);
+                    if (i.type == "offer") {
+                        this.CreateAnswer(i);
+                    } else {
+                        this.RecAnswer(i);
+                    }
+                } else {
+                    var o = new RTCIceCandidate(n);
+                    if (o != null) {
+                        this.mPeer.addIceCandidate(o, function () {}, function (e) {
+                            Debug.LogError(e);
+                        });
+                    }
+                }
+            }
+        }
+    };
+    e.prototype.AddSignalingMessage = function (e) {
+        Debug.Log("incoming Signaling message " + e);
+        this.mIncomingSignalingQueue.Enqueue(e);
+    };
+    e.prototype.DequeueSignalingMessage = function (e) {
+        {
+            if (this.mOutgoingSignalingQueue.Count() > 0) {
+                e.val = this.mOutgoingSignalingQueue.Dequeue();
+                return true;
+            } else {
+                e.val = null;
+                return false;
+            }
+        }
+    };
+    e.prototype.EnqueueOutgoing = function (e) {
+        {
+            Debug.Log("Outgoing Signaling message " + e);
+            this.mOutgoingSignalingQueue.Enqueue(e);
+        }
+    };
+    e.prototype.StartSignaling = function () {
+        this.OnStartSignaling();
+        this.CreateOffer();
+    };
+    e.prototype.NegotiateSignaling = function () {
+        var e = Random.getRandomInt(0, 2147483647);
+        this.mRandomNumerSent = e;
+        this.mDidSendRandomNumber = true;
+        this.EnqueueOutgoing("" + e);
+    };
+    e.prototype.CreateOffer = function () {
+        var e = this;
+        Debug.Log("CreateOffer");
+        this.mPeer.createOffer(function (t) {
+            var n = JSON.stringify(t);
+            e.mPeer.setLocalDescription(t, function () {
+                e.RtcSetSignalingStarted();
+                e.EnqueueOutgoing(n);
+            }, function (t) {
+                Debug.LogError(t);
+                e.RtcSetSignalingFailed();
+            });
+        }, function (t) {
+            Debug.LogError(t);
+            e.RtcSetSignalingFailed();
+        }, this.mOfferOptions);
+    };
+    e.prototype.CreateAnswer = function (e) {
+        var t = this;
+        Debug.Log("CreateAnswer");
+        this.mPeer.setRemoteDescription(e, function () {
+            t.mPeer.createAnswer(function (e) {
+                var n = JSON.stringify(e);
+                t.mPeer.setLocalDescription(e, function () {
+                    t.RtcSetSignalingStarted();
+                    t.EnqueueOutgoing(n);
+                }, function (e) {
+                    Debug.LogError(e);
+                    t.RtcSetSignalingFailed();
+                });
+            }, function (e) {
+                Debug.LogError(e);
+                t.RtcSetSignalingFailed();
+            });
+        }, function (e) {
+            Debug.LogError(e);
+            t.RtcSetSignalingFailed();
+        });
+    };
+    e.prototype.RecAnswer = function (e) {
+        var t = this;
+        Debug.Log("RecAnswer");
+        this.mPeer.setRemoteDescription(e, function () {}, function (e) {
+            Debug.LogError(e);
+            t.RtcSetSignalingFailed();
+        });
+    };
+    e.prototype.RtcSetSignalingStarted = function () {
+        if (this.mRtcInternalState == WebRtcInternalState.None) {
+            this.mRtcInternalState = WebRtcInternalState.Signaling;
+        }
+    };
+    e.prototype.RtcSetSignalingFailed = function () {
+        this.mRtcInternalState = WebRtcInternalState.SignalingFailed;
+    };
+    e.prototype.RtcSetConnected = function () {
+        if (this.mRtcInternalState == WebRtcInternalState.Signaling) this.mRtcInternalState = WebRtcInternalState.Connected;
+    };
+    e.prototype.RtcSetClosed = function () {
+        if (this.mRtcInternalState == WebRtcInternalState.Connected) this.mRtcInternalState = WebRtcInternalState.Closed;
+    };
+    e.prototype.OnIceCandidate = function (e) {
+        if (e && e.candidate) {
+            var t = e.candidate;
+            var n = JSON.stringify(t);
+            this.EnqueueOutgoing(n);
+        }
+    };
+    e.prototype.OnIceConnectionChange = function () {
+        Debug.Log(this.mPeer.iceConnectionState);
+        if (this.mPeer.iceConnectionState == "failed") {
+            this.mState = WebRtcPeerState.SignalingFailed;
+        }
+    };
+    e.prototype.OnIceGatheringChange = function () {
+        Debug.Log(this.mPeer.iceGatheringState);
+    };
+    e.prototype.OnRenegotiationNeeded = function () {};
+    e.prototype.OnSignalingChange = function () {
+        Debug.Log(this.mPeer.signalingState);
+        if (this.mPeer.signalingState == "closed") {
+            this.RtcSetClosed();
+        }
+    };
+    return e;
+}();
+
+var WebRtcDataPeer = function (e) {
+    __extends(t, e);
+
+    function t(t, n) {
+        e.call(this, n);
+        this.mInfo = null;
+        this.mEvents = new Queue();
+        this.mReliableDataChannelReady = false;
+        this.mUnreliableDataChannelReady = false;
+        this.mConnectionId = t;
+    }
+    Object.defineProperty(t.prototype, "ConnectionId", {
+        get: function get() {
+            return this.mConnectionId;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(t.prototype, "SignalingInfo", {
+        get: function get() {
+            return this.mInfo;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    t.prototype.SetSignalingInfo = function (e) {
+        this.mInfo = e;
+    };
+    t.prototype.OnSetup = function () {
+        var e = this;
+        this.mPeer.ondatachannel = function (t) {
+            e.OnDataChannel(t.channel);
+        };
+    };
+    t.prototype.OnStartSignaling = function () {
+        var e = {};
+        this.mReliableDataChannel = this.mPeer.createDataChannel(t.sLabelReliable, e);
+        this.RegisterObserverReliable();
+        var n = {};
+        n.maxRetransmits = 0;
+        n.ordered = false;
+        this.mUnreliableDataChannel = this.mPeer.createDataChannel(t.sLabelUnreliable, n);
+        this.RegisterObserverUnreliable();
+    };
+    t.prototype.OnCleanup = function () {
+        if (this.mReliableDataChannel != null) this.mReliableDataChannel.close();
+        if (this.mUnreliableDataChannel != null) this.mUnreliableDataChannel.close();
+    };
+    t.prototype.RegisterObserverReliable = function () {
+        var e = this;
+        this.mReliableDataChannel.onmessage = function (t) {
+            e.ReliableDataChannel_OnMessage(t);
+        };
+        this.mReliableDataChannel.onopen = function (t) {
+            e.ReliableDataChannel_OnOpen();
+        };
+        this.mReliableDataChannel.onclose = function (t) {
+            e.ReliableDataChannel_OnClose();
+        };
+        this.mReliableDataChannel.onerror = function (t) {
+            e.ReliableDataChannel_OnError("");
+        };
+    };
+    t.prototype.RegisterObserverUnreliable = function () {
+        var e = this;
+        this.mUnreliableDataChannel.onmessage = function (t) {
+            e.UnreliableDataChannel_OnMessage(t);
+        };
+        this.mUnreliableDataChannel.onopen = function (t) {
+            e.UnreliableDataChannel_OnOpen();
+        };
+        this.mUnreliableDataChannel.onclose = function (t) {
+            e.UnreliableDataChannel_OnClose();
+        };
+        this.mUnreliableDataChannel.onerror = function (t) {
+            e.UnreliableDataChannel_OnError("");
+        };
+    };
+    t.prototype.SendData = function (e, t) {
+        var n = e;
+        if (t) {
+            this.mReliableDataChannel.send(n);
+        } else {
+            this.mUnreliableDataChannel.send(n);
+        }
+    };
+    t.prototype.DequeueEvent = function (e) {
+        {
+            if (this.mEvents.Count() > 0) {
+                e.val = this.mEvents.Dequeue();
+                return true;
+            }
+        }
+        return false;
+    };
+    t.prototype.Enqueue = function (e) {
+        {
+            this.mEvents.Enqueue(e);
+        }
+    };
+    t.prototype.OnDataChannel = function (e) {
+        var n = e;
+        if (n.label == t.sLabelReliable) {
+            this.mReliableDataChannel = n;
+            this.RegisterObserverReliable();
+        } else if (n.label == t.sLabelUnreliable) {
+            this.mUnreliableDataChannel = n;
+            this.RegisterObserverUnreliable();
+        } else {
+            Debug.LogError("Datachannel with unexpected label " + n.label);
+        }
+    };
+    t.prototype.RtcOnMessageReceived = function (e, t) {
+        var n = NetEventType.UnreliableMessageReceived;
+        if (t) {
+            n = NetEventType.ReliableMessageReceived;
+        }
+        if (e.data instanceof ArrayBuffer) {
+            var i = new Uint8Array(e.data);
+            this.Enqueue(new NetworkEvent(n, this.mConnectionId, i));
+        } else if (e.data instanceof Blob) {
+            var o = this.mConnectionId;
+            var r = new FileReader();
+            var a = this;
+            r.onload = function () {
+                var e = new Uint8Array(this.result);
+                a.Enqueue(new NetworkEvent(n, a.mConnectionId, e));
+            };
+            r.readAsArrayBuffer(e.data);
+        } else {
+            Debug.LogError("Invalid message type. Only blob and arraybuffer supported: " + e.data);
+        }
+    };
+    t.prototype.ReliableDataChannel_OnMessage = function (e) {
+        Debug.Log("ReliableDataChannel_OnMessage ");
+        this.RtcOnMessageReceived(e, true);
+    };
+    t.prototype.ReliableDataChannel_OnOpen = function () {
+        Debug.Log("mReliableDataChannelReady");
+        this.mReliableDataChannelReady = true;
+        if (this.IsRtcConnected()) {
+            this.RtcSetConnected();
+            Debug.Log("Fully connected");
+        }
+    };
+    t.prototype.ReliableDataChannel_OnClose = function () {
+        this.RtcSetClosed();
+    };
+    t.prototype.ReliableDataChannel_OnError = function (e) {
+        Debug.LogError(e);
+        this.RtcSetClosed();
+    };
+    t.prototype.UnreliableDataChannel_OnMessage = function (e) {
+        Debug.Log("UnreliableDataChannel_OnMessage ");
+        this.RtcOnMessageReceived(e, false);
+    };
+    t.prototype.UnreliableDataChannel_OnOpen = function () {
+        Debug.Log("mUnreliableDataChannelReady");
+        this.mUnreliableDataChannelReady = true;
+        if (this.IsRtcConnected()) {
+            this.RtcSetConnected();
+            Debug.Log("Fully connected");
+        }
+    };
+    t.prototype.UnreliableDataChannel_OnClose = function () {
+        this.RtcSetClosed();
+    };
+    t.prototype.UnreliableDataChannel_OnError = function (e) {
+        Debug.LogError(e);
+        this.RtcSetClosed();
+    };
+    t.prototype.IsRtcConnected = function () {
+        return this.mReliableDataChannelReady && this.mUnreliableDataChannelReady;
+    };
+    t.sLabelReliable = "reliable";
+    t.sLabelUnreliable = "unreliable";
+    return t;
+}(AWebRtcPeer);
+
+var WebsocketConnectionStatus;
+(function (e) {
+    e[e["Uninitialized"] = 0] = "Uninitialized";
+    e[e["NotConnected"] = 1] = "NotConnected";
+    e[e["Connecting"] = 2] = "Connecting";
+    e[e["Connected"] = 3] = "Connected";
+    e[e["Disconnecting"] = 4] = "Disconnecting";
+})(WebsocketConnectionStatus || (WebsocketConnectionStatus = {}));
+var WebsocketServerStatus;
+(function (e) {
+    e[e["Offline"] = 0] = "Offline";
+    e[e["Starting"] = 1] = "Starting";
+    e[e["Online"] = 2] = "Online";
+    e[e["ShuttingDown"] = 3] = "ShuttingDown";
+})(WebsocketServerStatus || (WebsocketServerStatus = {}));
+var WebsocketNetwork = function () {
+    function e(e) {
+        this.mStatus = WebsocketConnectionStatus.Uninitialized;
+        this.mOutgoingQueue = new Array();
+        this.mIncomingQueue = new Array();
+        this.mServerStatus = WebsocketServerStatus.Offline;
+        this.mConnecting = new Array();
+        this.mConnections = new Array();
+        this.mNextOutgoingConnectionId = new ConnectionId(1);
+        this.mUrl = null;
+        this.mIsDisposed = false;
+        this.mUrl = e;
+        this.mStatus = WebsocketConnectionStatus.NotConnected;
+    }
+    e.prototype.getStatus = function () {
+        return this.mStatus;
+    };
+    e.prototype.WebsocketConnect = function () {
+        var e = this;
+        this.mStatus = WebsocketConnectionStatus.Connecting;
+        this.mSocket = new WebSocket(this.mUrl);
+        this.mSocket.binaryType = "arraybuffer";
+        this.mSocket.onopen = function () {
+            e.OnWebsocketOnOpen();
+        };
+        this.mSocket.onerror = function (t) {
+            e.OnWebsocketOnError(t);
+        };
+        this.mSocket.onmessage = function (t) {
+            e.OnWebsocketOnMessage(t);
+        };
+        this.mSocket.onclose = function (t) {
+            e.OnWebsocketOnClose(t);
+        };
+    };
+    e.prototype.WebsocketCleanup = function () {
+        this.mSocket.onopen = null;
+        this.mSocket.onerror = null;
+        this.mSocket.onmessage = null;
+        this.mSocket.onclose = null;
+        if (this.mSocket.readyState == this.mSocket.OPEN || this.mSocket.readyState == this.mSocket.CONNECTING) {
+            this.mSocket.close();
+        }
+        this.mSocket = null;
+    };
+    e.prototype.EnsureServerConnection = function () {
+        if (this.mStatus == WebsocketConnectionStatus.NotConnected) {
+            this.WebsocketConnect();
+        }
+    };
+    e.prototype.CheckSleep = function () {
+        if (this.mStatus == WebsocketConnectionStatus.Connected && this.mServerStatus == WebsocketServerStatus.Offline && this.mConnecting.length == 0 && this.mConnections.length == 0) {
+            this.Cleanup();
+        }
+    };
+    e.prototype.OnWebsocketOnOpen = function () {
+        console.log("onWebsocketOnOpen");
+        this.mStatus = WebsocketConnectionStatus.Connected;
+    };
+    e.prototype.OnWebsocketOnClose = function (e) {
+        console.log("Closed: " + JSON.stringify(e));
+        if (this.mStatus == WebsocketConnectionStatus.Disconnecting || this.mStatus == WebsocketConnectionStatus.NotConnected) return;
+        this.Cleanup();
+        this.mStatus = WebsocketConnectionStatus.NotConnected;
+    };
+    e.prototype.OnWebsocketOnMessage = function (e) {
+        if (this.mStatus == WebsocketConnectionStatus.Disconnecting || this.mStatus == WebsocketConnectionStatus.NotConnected) return;
+        var t = NetworkEvent.fromByteArray(new Uint8Array(e.data));
+        this.HandleIncomingEvent(t);
+    };
+    e.prototype.OnWebsocketOnError = function (e) {
+        if (this.mStatus == WebsocketConnectionStatus.Disconnecting || this.mStatus == WebsocketConnectionStatus.NotConnected) return;
+        console.log("WebSocket Error " + e);
+    };
+    e.prototype.Cleanup = function () {
+        if (this.mStatus == WebsocketConnectionStatus.Disconnecting || this.mStatus == WebsocketConnectionStatus.NotConnected) return;
+        this.mStatus = WebsocketConnectionStatus.Disconnecting;
+        for (var e = 0, t = this.mConnecting; e < t.length; e++) {
+            var n = t[e];
+            this.EnqueueIncoming(new NetworkEvent(NetEventType.ConnectionFailed, new ConnectionId(n), null));
+        }
+        this.mConnecting = new Array();
+        for (var i = 0, o = this.mConnections; i < o.length; i++) {
+            var n = o[i];
+            this.EnqueueIncoming(new NetworkEvent(NetEventType.Disconnected, new ConnectionId(n), null));
+        }
+        this.mConnections = new Array();
+        if (this.mServerStatus == WebsocketServerStatus.Starting) {
+            this.EnqueueIncoming(new NetworkEvent(NetEventType.ServerInitFailed, ConnectionId.INVALID, null));
+        } else if (this.mServerStatus == WebsocketServerStatus.Online) {
+            this.EnqueueIncoming(new NetworkEvent(NetEventType.ServerClosed, ConnectionId.INVALID, null));
+        } else if (this.mServerStatus == WebsocketServerStatus.ShuttingDown) {
+            this.EnqueueIncoming(new NetworkEvent(NetEventType.ServerClosed, ConnectionId.INVALID, null));
+        }
+        this.mServerStatus = WebsocketServerStatus.Offline;
+        this.mOutgoingQueue = new Array();
+        this.WebsocketCleanup();
+        this.mStatus = WebsocketConnectionStatus.NotConnected;
+    };
+    e.prototype.EnqueueOutgoing = function (e) {
+        this.mOutgoingQueue.push(e);
+    };
+    e.prototype.EnqueueIncoming = function (e) {
+        this.mIncomingQueue.push(e);
+    };
+    e.prototype.TryRemoveConnecting = function (e) {
+        var t = this.mConnecting.indexOf(e.id);
+        if (t != -1) {
+            this.mConnecting.splice(t, 1);
+        }
+    };
+    e.prototype.TryRemoveConnection = function (e) {
+        var t = this.mConnections.indexOf(e.id);
+        if (t != -1) {
+            this.mConnections.splice(t, 1);
+        }
+    };
+    e.prototype.HandleIncomingEvent = function (e) {
+        if (e.Type == NetEventType.NewConnection) {
+            this.TryRemoveConnecting(e.ConnectionId);
+            this.mConnections.push(e.ConnectionId.id);
+        } else if (e.Type == NetEventType.ConnectionFailed) {
+            this.TryRemoveConnecting(e.ConnectionId);
+        } else if (e.Type == NetEventType.Disconnected) {
+            this.TryRemoveConnection(e.ConnectionId);
+        } else if (e.Type == NetEventType.ServerInitialized) {
+            this.mServerStatus = WebsocketServerStatus.Online;
+        } else if (e.Type == NetEventType.ServerInitFailed) {
+            this.mServerStatus = WebsocketServerStatus.Offline;
+        } else if (e.Type == NetEventType.ServerClosed) {
+            this.mServerStatus = WebsocketServerStatus.ShuttingDown;
+            this.mServerStatus = WebsocketServerStatus.Offline;
+        }
+        this.EnqueueIncoming(e);
+    };
+    e.prototype.HandleOutgoingEvents = function () {
+        while (this.mOutgoingQueue.length > 0) {
+            var e = this.mOutgoingQueue.shift();
+            var t = NetworkEvent.toByteArray(e);
+            this.mSocket.send(t);
+        }
+    };
+    e.prototype.NextConnectionId = function () {
+        var e = this.mNextOutgoingConnectionId;
+        this.mNextOutgoingConnectionId = new ConnectionId(this.mNextOutgoingConnectionId.id + 1);
+        return e;
+    };
+    e.prototype.GetRandomKey = function () {
+        var e = "";
+        for (var t = 0; t < 7; t++) {
+            e += String.fromCharCode(65 + Math.round(Math.random() * 25));
+        }
+        return e;
+    };
+    e.prototype.Dequeue = function () {
+        if (this.mIncomingQueue.length > 0) return this.mIncomingQueue.shift();
+        return null;
+    };
+    e.prototype.Peek = function () {
+        if (this.mIncomingQueue.length > 0) return this.mIncomingQueue[0];
+        return null;
+    };
+    e.prototype.Update = function () {
+        this.CheckSleep();
+    };
+    e.prototype.Flush = function () {
+        if (this.mStatus == WebsocketConnectionStatus.Connected) this.HandleOutgoingEvents();
+    };
+    e.prototype.SendData = function (e, t, n) {
+        if (e == null || t == null || t.length == 0) return;
+        var i;
+        if (n) {
+            i = new NetworkEvent(NetEventType.ReliableMessageReceived, e, t);
+        } else {
+            i = new NetworkEvent(NetEventType.UnreliableMessageReceived, e, t);
+        }
+        this.EnqueueOutgoing(i);
+    };
+    e.prototype.Disconnect = function (e) {
+        var t = new NetworkEvent(NetEventType.Disconnected, e, null);
+        this.EnqueueOutgoing(t);
+    };
+    e.prototype.Shutdown = function () {
+        this.Cleanup();
+        this.mStatus = WebsocketConnectionStatus.NotConnected;
+    };
+    e.prototype.Dispose = function () {
+        if (this.mIsDisposed == false) {
+            this.Shutdown();
+            this.mIsDisposed = true;
+        }
+    };
+    e.prototype.StartServer = function (e) {
+        if (e == null) {
+            e = "" + this.GetRandomKey();
+        }
+        if (this.mServerStatus == WebsocketServerStatus.Offline) {
+            this.EnsureServerConnection();
+            this.mServerStatus = WebsocketServerStatus.Starting;
+            this.EnqueueOutgoing(new NetworkEvent(NetEventType.ServerInitialized, ConnectionId.INVALID, e));
+        } else {
+            this.EnqueueIncoming(new NetworkEvent(NetEventType.ServerInitFailed, ConnectionId.INVALID, e));
+        }
+    };
+    e.prototype.StopServer = function () {
+        this.EnqueueOutgoing(new NetworkEvent(NetEventType.ServerClosed, ConnectionId.INVALID, null));
+    };
+    e.prototype.Connect = function (e) {
+        this.EnsureServerConnection();
+        var t = this.NextConnectionId();
+        this.mConnecting.push(t.id);
+        var n = new NetworkEvent(NetEventType.NewConnection, t, e);
+        this.EnqueueOutgoing(n);
+        return t;
+    };
+    return e;
+}();
+
+//Utils
+
+function byteArrayToString(arr) {
+    return String.fromCharCode.apply(String, arr);
+}
+
+function stringToByteArray(str) {
+    var bytes = [];
+    for (var i = 0; i < str.length; ++i) {
+        bytes.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(bytes);
+}
+
+/*
+ 
+function stringToByteArray2(str) {
+    var arrayBuf = new ArrayBuffer(str.length * 2);
+    var uint16Arr = new Uint16Array(arrayBuf);
+    for (var i = 0, len = str.length; i < len; i++) {
+        uint16Arr[i] = str.charCodeAt(i)
+    }
+    var uint8Arr = new Uint8Array(t);
+    return uint8Arr;
+} 
+
+*/
+
+var Queue = function () {
+    function e() {
+        this.mArr = new Array();
+    }
+    e.prototype.Enqueue = function (e) {
+        this.mArr.push(e);
+    };
+    e.prototype.TryDequeue = function (e) {
+        var t = false;
+        if (this.mArr.length > 0) {
+            e.val = this.mArr.shift();
+            t = true;
+        }
+        return t;
+    };
+    e.prototype.Dequeue = function () {
+        if (this.mArr.length > 0) {
+            return this.mArr.shift();
+        } else {
+            return null;
+        }
+    };
+    e.prototype.Peek = function () {
+        if (this.mArr.length > 0) {
+            return this.mArr[0];
+        } else {
+            return null;
+        }
+    };
+    e.prototype.Count = function () {
+        return this.mArr.length;
+    };
+    return e;
+}();
+
+var Output = function () {
+    function e() {}
+    return e;
+}();
+
+var Debug = function () {
+    function e() {}
+    e.Log = function (e) {
+        if (e == null) {
+            console.debug(e);
+        }
+        console.debug(e);
+    };
+    e.LogError = function (e) {
+        console.debug(e);
+    };
+    e.LogWarning = function (e) {
+        console.debug(e);
+    };
+    return e;
+}();
+
+var Random = function () {
+    function e() {}
+    e.getRandomInt = function (e, t) {
+        e = Math.ceil(e);
+        t = Math.floor(t);
+        return Math.floor(Math.random() * (t - e)) + e;
+    };
+    return e;
+}();
+
+var Helper = function () {
+    function e() {}
+    e.tryParseInt = function (e) {
+        try {
+            if (/^(\-|\+)?([0-9]+)$/.test(e)) {
+                var t = Number(e);
+                if (isNaN(t) == false) return t;
+            }
+        } catch (e) {}
+        return null;
+    };
+    return e;
+}();
 
 /***/ })
 /******/ ]);

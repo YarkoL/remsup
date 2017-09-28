@@ -20,7 +20,7 @@ const App = () => (
 
 //init store values
 store.set('loggedIn', true);	//FOR DEV ONLY please don't ***FORGET*** to change this OK??
-store.set('session', null);
+store.set('room', null);
 
 const destination = document.getElementById("app");
 
