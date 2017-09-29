@@ -29,35 +29,39 @@ const styles = {
         right : '8px', top : '3px', float: 'right', 
         display : 'block', width: '68px', height: '34px',
         outline: 'none', border: 'none', backgroundColor : 'gray'
-      }
+      },
     } 
   }
 }
 
 class Ticket extends React.Component {
-  
+ 
+ /* 
   handleClick = (ev) => {
     ev.preventDefault();
     store.set('room', this.props.room);
     this.props.history.push("/rtc");
   }
-
+*/
   render (){
-      return (
-        <div style = {styles.ticket}>
-         <button style = {(this.props.status === 'open')? styles.ticket.button.statusopen : styles.ticket.button.statusclosed }
-           onClick = {this.handleClick}/>
-          <div style = {(this.props.status === 'open')? styles.ticket.status.open : styles.ticket.status.closed }>
-            <img width="75" src={this.props.avatar} /> 
-                <div style = {styles.ticket.fields}>
-                  <div style = {styles.ticket.fields.username}>
-                    {this.props.username}
-                  </div>
-                  <div>{this.props.timestamp}</div>
-                  <div>{this.props.desc}</div>
+    let url = "main.html?" + this.props.room; 
+    return (
+      <div style = {styles.ticket}>
+     
+        <div style = {(this.props.status === 'open')? styles.ticket.button.statusopen : styles.ticket.button.statusclosed }
+         /*onClick = {this.handleClick}*/> <a href={url}>chat</a></div>
+     
+        <div style = {(this.props.status === 'open')? styles.ticket.status.open : styles.ticket.status.closed }>
+          <img width="75" src={this.props.avatar} /> 
+              <div style = {styles.ticket.fields}>
+                <div style = {styles.ticket.fields.username}>
+                  {this.props.username}
                 </div>
-          </div>
-       </div>   
+                <div>{this.props.timestamp}</div>
+                <div>{this.props.desc}</div>
+              </div>
+        </div>
+     </div>   
     );    
   }
 } 

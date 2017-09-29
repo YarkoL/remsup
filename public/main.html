@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		RTC Session
+	</title>
+</head>
+<body>
+
+	<div id ="content"></div>
+	<button onClick="window.location.href='/' ">Back</button>
+	<script type="text/javascript">
+		var room = window.location.search.substring(1);
+		var content = document.getElementById("content");
+		content.innerHTML = room;
+	</script>
+</body>
+</html>
