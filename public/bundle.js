@@ -31871,8 +31871,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
@@ -31883,13 +31881,9 @@ var _store2 = _interopRequireDefault(_store);
 
 var _reactRouterDom = __webpack_require__(43);
 
-var _Ticket = __webpack_require__(266);
+var _LiveFeed = __webpack_require__(298);
 
-var _Ticket2 = _interopRequireDefault(_Ticket);
-
-var _socket = __webpack_require__(267);
-
-var _socket2 = _interopRequireDefault(_socket);
+var _LiveFeed2 = _interopRequireDefault(_LiveFeed);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31901,39 +31895,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 //import Rtc from './Rtc';
 
-//some test content for tickets
 
-var data = [{
-  avatar: "https://placehold.it/75",
-  status: "closed",
-  username: "Bilbo",
-  timestamp: "09/26/17 15:03",
-  desc: "I need to get out of this cave",
-  room: "_bilbo"
-}, {
-  avatar: "https://placehold.it/75",
-  status: "open",
-  username: "Gollum",
-  timestamp: "09/26/17 15:05",
-  desc: "I miss my preciousss",
-  room: "_gollum"
-}];
+//views -- these will be made into separate components
 
-var TicketList = function TicketList(props) {
-  return _react2.default.createElement(
-    'div',
-    null,
-    props.tickets.map(function (ticket, index) {
-      return _react2.default.createElement(_Ticket2.default, _extends({ key: index }, ticket));
-    })
-  );
-};
-
-//MAIN VIEWS -- these will be made into separate components
-
-var LiveFeed = function LiveFeed() {
-  return _react2.default.createElement(TicketList, { tickets: data });
-};
 
 var ViewLogs = function ViewLogs() {
   return _react2.default.createElement(
@@ -32018,7 +31982,7 @@ var Middle = function Middle() {
       _react2.default.createElement(
         _reactRouterDom.Switch,
         null,
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: LiveFeed }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _LiveFeed2.default }),
         _react2.default.createElement(_reactRouterDom.Route, { path: '/logs', component: ViewLogs }),
         _react2.default.createElement(_reactRouterDom.Route, { path: '/users', component: UserManagement })
       )
@@ -32066,11 +32030,6 @@ var AppFrame = function (_React$Component) {
       _store2.default.set('loggedIn', false);
       console.log("Set loggedin to false");
       _this.redirectToLogin();
-    }, _this.initSocket = function () {
-      var socket = (0, _socket2.default)('http://localhost:3030');
-      socket.on('roomname', function (data) {
-        console.log('socket message ' + JSON.stringify(data));
-      });
     }, _this.redirectToLogin = function () {
       _this.props.history.push("/login");
     }, _temp), _possibleConstructorReturn(_this, _ret);
@@ -32081,7 +32040,7 @@ var AppFrame = function (_React$Component) {
     value: function componentWillMount() {
       if (_store2.default.get('loggedIn') === true) {
         //we're OK let's just return
-        this.initSocket();
+        return;
       } else {
         console.log("Not logged in.  Redirecting to login form");
         this.redirectToLogin();
@@ -32144,7 +32103,7 @@ var styles = {
     display: 'block',
     margin: '1em',
     status: {
-      open: { backgroundColor: 'yellow' },
+      open: { backgroundColor: 'goldenrod' },
       closed: { backgroundColor: 'silver' }
     },
     avatar: {
@@ -32160,7 +32119,7 @@ var styles = {
       statusopen: {
         right: '8px', top: '3px', float: 'right',
         display: 'block', width: '68px', height: '34px',
-        outline: 'none', border: 'none', backgroundColor: 'lawngreen'
+        outline: 'none', border: 'none', backgroundColor: 'darkolivegreen'
       },
       statusclosed: {
         right: '8px', top: '3px', float: 'right',
@@ -32198,7 +32157,7 @@ var Ticket = function (_React$Component) {
         { style: styles.ticket },
         _react2.default.createElement(
           'div',
-          { style: this.props.status === 'open' ? styles.ticket.button.statusopen : styles.ticket.button.statusclosed
+          { style: /*(this.props.status === 'open')*/true ? styles.ticket.button.statusopen : styles.ticket.button.statusclosed
             /*onClick = {this.handleClick}*/ },
           ' ',
           _react2.default.createElement(
@@ -32209,7 +32168,7 @@ var Ticket = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { style: this.props.status === 'open' ? styles.ticket.status.open : styles.ticket.status.closed },
+          { style: /*(this.props.status === 'open')*/true ? styles.ticket.status.open : styles.ticket.status.closed },
           _react2.default.createElement('img', { width: '75', src: this.props.avatar }),
           _react2.default.createElement(
             'div',
@@ -32217,17 +32176,7 @@ var Ticket = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { style: styles.ticket.fields.username },
-              this.props.username
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              this.props.timestamp
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              this.props.desc
+              this.props.guid
             )
           )
         )
@@ -35942,6 +35891,97 @@ var Login = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _reactRouterDom.withRouter)(Login);
+
+/***/ }),
+/* 298 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _socket = __webpack_require__(267);
+
+var _socket2 = _interopRequireDefault(_socket);
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Ticket = __webpack_require__(266);
+
+var _Ticket2 = _interopRequireDefault(_Ticket);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var data = [{
+	guid: 9898,
+	roomname: "room1"
+}, {
+	guid: 9897,
+	roomname: "room2"
+}];
+
+var TicketList = function TicketList(props) {
+	return _react2.default.createElement(
+		'div',
+		null,
+		props.tickets.map(function (ticket) {
+			return _react2.default.createElement(_Ticket2.default, { key: ticket.guid, guid: ticket.guid, room: ticket.roomname });
+		})
+	);
+};
+
+var LiveFeed = function (_React$Component) {
+	_inherits(LiveFeed, _React$Component);
+
+	function LiveFeed() {
+		_classCallCheck(this, LiveFeed);
+
+		var _this = _possibleConstructorReturn(this, (LiveFeed.__proto__ || Object.getPrototypeOf(LiveFeed)).call(this));
+
+		_this.initSocket = function () {
+			var socket = (0, _socket2.default)('http://localhost:3030');
+			socket.on('roomname', function (data) {
+				console.log('socket message ' + JSON.stringify(data));
+			});
+		};
+
+		_this.state = { tickets: data };
+		return _this;
+	}
+
+	_createClass(LiveFeed, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.initSocket();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(TicketList, { tickets: this.state.tickets })
+			);
+		}
+	}]);
+
+	return LiveFeed;
+}(_react2.default.Component);
+
+exports.default = LiveFeed;
 
 /***/ })
 /******/ ]);

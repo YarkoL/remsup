@@ -2,44 +2,13 @@ import React from 'react';
 import store from 'store';
 import { Switch, Route, Link, withRouter } from 'react-router-dom';
 
-import Ticket from './Ticket';
-import openSocket from 'socket.io-client';
+import LiveFeed from './LiveFeed';
+
 //import Rtc from './Rtc';
 
-//some test content for tickets
 
-let data = [
-  {
-    avatar : "https://placehold.it/75",
-    status : "closed",
-    username : "Bilbo",
-    timestamp : "09/26/17 15:03",
-    desc: "I need to get out of this cave",
-    room : "_bilbo"
-  },
-  {
-    avatar : "https://placehold.it/75",
-    status : "open",
-    username : "Gollum",
-    timestamp : "09/26/17 15:05",
-    desc: "I miss my preciousss",
-    room : "_gollum"
-  }
-]
+//views -- these will be made into separate components
 
-const TicketList = (props) => { 
-  return (
-    <div>
-      {props.tickets.map( (ticket, index)  => <Ticket key={index} {... ticket} />)}
-    </div>
-  );
-};
-
-//MAIN VIEWS -- these will be made into separate components
-
-const LiveFeed = () => (
-  <TicketList tickets={data} />
-)
 
 const ViewLogs = () => (
   <h1>View logs</h1>
@@ -109,7 +78,7 @@ class AppFrame extends React.Component {
   componentWillMount() {
     if (store.get('loggedIn') ===  true ) {
       //we're OK let's just return
-      this.initSocket();
+      return;
     } else {
   	  console.log ("Not logged in.  Redirecting to login form");
   	  this.redirectToLogin();
@@ -123,13 +92,6 @@ class AppFrame extends React.Component {
     this.redirectToLogin();
   } 
 
-  initSocket = () => {
-    const socket = openSocket('http://localhost:3030');
-    socket.on('roomname', (data) => {
-                console.log('socket message '+JSON.stringify(data));
-      }
-    );
-  }
   
   redirectToLogin = () => {
      this.props.history.push("/login");
