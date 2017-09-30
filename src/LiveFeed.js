@@ -32,11 +32,23 @@ class LiveFeed extends React.Component {
 	componentWillMount() {
 		this.initSocket();
 	}
+
+	createTicket = (newTicket) => {
+	    const newTickets = this.state.tickets.slice();
+	    newTickets.push(newTicket);
+	    this.setState({ tickets: newTickets });
+	}
 	
 	initSocket = () => {
 	    const socket = openSocket('http://localhost:3030');
 	    socket.on('roomname', (data) => {
-	        console.log('socket message '+JSON.stringify(data));
+	        console.log('socket message '+JSON.stringify(data));       
+	        this.createTicket(
+	        	{
+	        		guid : data.guid,
+	        		roomname : data.roomname
+	        	}
+	        ); 
 	    });
   	}
 

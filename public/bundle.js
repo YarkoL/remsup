@@ -35951,10 +35951,20 @@ var LiveFeed = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, (LiveFeed.__proto__ || Object.getPrototypeOf(LiveFeed)).call(this));
 
+		_this.createTicket = function (newTicket) {
+			var newTickets = _this.state.tickets.slice();
+			newTickets.push(newTicket);
+			_this.setState({ tickets: newTickets });
+		};
+
 		_this.initSocket = function () {
 			var socket = (0, _socket2.default)('http://localhost:3030');
 			socket.on('roomname', function (data) {
 				console.log('socket message ' + JSON.stringify(data));
+				_this.createTicket({
+					guid: data.guid,
+					roomname: data.roomname
+				});
 			});
 		};
 
