@@ -3,6 +3,7 @@ import store from 'store';
 import { Switch, Route, Link, withRouter } from 'react-router-dom';
 
 import Ticket from './Ticket';
+import openSocket from 'socket.io-client';
 //import Rtc from './Rtc';
 
 //some test content for tickets
@@ -108,7 +109,7 @@ class AppFrame extends React.Component {
   componentWillMount() {
     if (store.get('loggedIn') ===  true ) {
       //we're OK let's just return
-      return;
+      this.initSocket();
     } else {
   	  console.log ("Not logged in.  Redirecting to login form");
   	  this.redirectToLogin();
@@ -122,6 +123,14 @@ class AppFrame extends React.Component {
     this.redirectToLogin();
   } 
 
+  initSocket = () => {
+    const socket = openSocket('http://localhost:3030');
+    socket.on('roomname', (data) => {
+                console.log('socket message '+JSON.stringify(data));
+      }
+    );
+  }
+  
   redirectToLogin = () => {
      this.props.history.push("/login");
   }
