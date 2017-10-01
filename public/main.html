@@ -4,15 +4,25 @@
 	<title>
 		RTC Session
 	</title>
+	<link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-	<div id ="content"></div>
-	<button onClick="window.location.href='/' ">Back</button>
-	<script type="text/javascript">
-		var room = window.location.search.substring(1);
-		var content = document.getElementById("content");
-		content.innerHTML = room;
-	</script>
+
+	<div id="content">		
+	    <span id="sessionName"></span><br/>
+		<button id="startButton">Start</button>
+		<button id="stopButton" disabled="disabled">Stop</button>
+		<div id="videoFrames"></div>
+		<input type="text" id="chatInput" placeholder="Say something">
+		<button id="sendButton" disabled="disabled">Send</button><br>
+		<div id="chat"></div>
+	</div> 
+		<script src="webrtc/webrtcnetwork.js"></script>
+		<script src="webrtc/browsermedia.js"></script>
+		<script src="webrtc/netevent.js"></script>
+		<script src="webrtc/main.js"></script>
+	
+	
 </body>
 </html>

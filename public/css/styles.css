@@ -12,7 +12,7 @@ header {
 main {
   flex: 1;
   display: flex;
-  background-color: #d8d8d8;
+  background-color: #5b5b5b;
 }
 
 .loginform {
@@ -29,7 +29,7 @@ main {
     background-image:url(../img/login.png);
     background-size:contain;
     background-repeat:no-repeat;
-    background-color: #5b5b5b;
+    background-color: #d8d8d8;
     max-width: 100%;
     height: auto;
 }

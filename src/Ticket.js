@@ -22,12 +22,12 @@ const styles = {
     button : {
       statusopen : {
         right : '8px', top : '3px', float: 'right', 
-        display : 'block', width: '68px', height: '34px',
+        display : 'block', width: '68px', height: '30px', color : 'white',
         outline: 'none', border: 'none', backgroundColor : 'darkolivegreen'
       },
       statusclosed : {
         right : '8px', top : '3px', float: 'right', 
-        display : 'block', width: '68px', height: '34px',
+        display : 'block', width: '68px', height: '30px', color : 'white',
         outline: 'none', border: 'none', backgroundColor : 'gray'
       },
     } 
@@ -36,20 +36,21 @@ const styles = {
 
 class Ticket extends React.Component {
  
- /* 
   handleClick = (ev) => {
     ev.preventDefault();
+    /*
     store.set('room', this.props.room);
     this.props.history.push("/rtc");
+    */
+    window.location.href = "main.html?" + this.props.room; 
   }
-*/
+
   render (){
-    let url = "main.html?" + this.props.room; 
     return (
       <div style = {styles.ticket}>
      
-        <div style = {/*(this.props.status === 'open')*/ true? styles.ticket.button.statusopen : styles.ticket.button.statusclosed }
-         /*onClick = {this.handleClick}*/> <a href={url}>chat</a></div>
+        <button style = {/*(this.props.status === 'open')*/ true? styles.ticket.button.statusopen : styles.ticket.button.statusclosed }
+         onClick = {this.handleClick}>Chat</button>
      
         <div style = {/*(this.props.status === 'open')*/ true? styles.ticket.status.open : styles.ticket.status.closed }>
           <img width="75" src={this.props.avatar} /> 

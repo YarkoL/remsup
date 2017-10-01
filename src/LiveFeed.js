@@ -2,16 +2,8 @@ import openSocket from 'socket.io-client';
 import React from 'react';  
 import Ticket from './Ticket';
 
-let data = [
-   {
-      guid : 9898,
-      roomname : "room1"
-   },
-   {
-      guid : 9897,
-      roomname : "room2"
-   }
-]
+let data = []
+const url = 'http://localhost:3030';
 
 const TicketList = (props) => { 
   return (
@@ -40,9 +32,9 @@ class LiveFeed extends React.Component {
 	}
 	
 	initSocket = () => {
-	    const socket = openSocket('http://localhost:3030');
+	    const socket = openSocket(url);
 	    socket.on('roomname', (data) => {
-	        console.log('socket message '+JSON.stringify(data));       
+	        console.log('socket message '+ JSON.stringify(data));       
 	        this.createTicket(
 	        	{
 	        		guid : data.guid,
