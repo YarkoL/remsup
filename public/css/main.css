@@ -23,6 +23,7 @@ body {
 	height: 150px;
 	width: 600px;
 	float:left;
+	color: lightgreen;
 }
 
 span {
@@ -44,6 +45,7 @@ video {
 	color: white;
 }
 .system {
-	color: slategray;
+	color: gray;
 }
-.chat {}
+.chat {
+}
