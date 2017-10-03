@@ -32130,6 +32130,19 @@ var LiveFeed = function (_React$Component) {
 
 		_this.initSocket = function () {
 			var socket = (0, _socket2.default)(url);
+			socket.on('connect', function () {
+				console.log('connected');
+			});
+			socket.on('disconnect', function () {
+				console.log('disconnected');
+			});
+			socket.on('error', function (err) {
+				if (err === 'handshake error') {
+					console.log('handshake error', err);
+				} else {
+					console.log('io error', err);
+				}
+			});
 			socket.on('roomname', function (data) {
 				console.log('socket message ' + JSON.stringify(data));
 				_this.createTicket({
