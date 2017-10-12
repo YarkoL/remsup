@@ -71,7 +71,7 @@ function StopPeer()
 	chatInput.disabled = true;
     sendButton.disabled = true;
 
-    window.location.href = "/"; 
+    //window.location.href = "/"; 
 }
 
 /*
@@ -107,9 +107,9 @@ function AppendToChat(txt, classId)
 
 function RunPeer(addr) 
 {	
-    FrameBuffer.sUseLazyFrames = true;
+    //
+    FrameBuffer.sUseLazyFrames = true; 
     var conf = new NetworkConfig;
-    conf.IsConference = false; 
     
     //display some info
     AppendToChat("Starting " + (conf.IsConference? "server" : "client" ) + "...", "system");    
@@ -118,56 +118,33 @@ function RunPeer(addr)
     
     rtcCall = new BrowserWebRtcCall(conf);
 
-    //UI element that contains the video, see SetupVideoElement 
+    //UI element that contains the video
     var videoElement = null;
-    //array for videoelements containing active connections
-    var videoElements = {};
 
     rtcCall.addEventListener(function(obj, event) 
     {
         var evt = event;
         switch(event.Type) 
         {
-            case CallEventType.ConfigurationComplete :
-                //UI changes, opposite of StopPeer
+            case CallEventType.ConfigurationComplete : 
+                //triggered when succesfully configured 
+                //media and network, frame buffer see AWebRtcCall.OnConfigurationComplete
                 stopButton.disabled = false;
                 startButton.disabled = true;
                 chatInput.disabled = false;
                 sendButton.disabled = false;
                 AppendToChat("configuration complete", "system");
+                //content.appendChild(document.createElement("br"))
                 break;
 
             case CallEventType.FrameUpdate :
                 videoElement = evt.Frame.FrameGenerator.VideoElement;
-               
-                if (videoElement == null && evt.ConnectionId == ConnectionId.INVALID) 
-                {
-                    AppendToChat("local video added", "system"); //TODO unclear if it ever goes in here
-                } 
-                else if (evt.ConnectionId != ConnectionId.INVALID && videoElements[evt.ConnectionId.id] == null)
-                {
-                    AppendToChat("remote video added","system");
-                    videoElements[evt.ConnectionId.id] = videoElement;       
-                }
                 videoFrames.appendChild(videoElement);
-                var linebreak = document.createElement("br");
-                content.appendChild(linebreak)
                 break;
 
             case CallEventType.Message :
                 AppendToChat(evt.Content, "other");
                 console.log("message from " + evt.ConnectionId.id + " : " + evt.Content);
-                break;
-
-            case CallEventType.ListeningFailed :
-                if (conf.IsConference == false) 
-                {
-                    rtcCall.Call(addr);
-                } 
-                else 
-                {
-                    AppendToChat("Listening failed. Server dead?", "system");
-                }
                 break;
 
             case CallEventType.CallEnded : 
@@ -187,6 +164,7 @@ function RunPeer(addr)
         rtcCall.Update()
     }, 50);
     rtcCall.Configure(new MediaConfig());
-    rtcCall.Listen(addr);
+    //rtcCall.Listen(addr);
+    rtcCall.Call(addr);
 }
 
