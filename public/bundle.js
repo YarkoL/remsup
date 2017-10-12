@@ -15484,7 +15484,7 @@ var App = function App() {
 };
 
 //init store values
-_store2.default.set('loggedIn', false);
+_store2.default.set('loggedIn', false); //FOR DEV ONLY please don't ***FORGET*** to change this OK??
 _store2.default.set('room', null);
 
 var destination = document.getElementById("app");
