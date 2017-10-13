@@ -3,13 +3,13 @@ import React from 'react';
 import Ticket from './Ticket';
 
 let data = []
-const url = 'http://remotesupport-dev.azurewebsites.net';
-//const url = 'http://localhost:3030';
+//const url = 'http://remotesupport-dev.azurewebsites.net';
+const url = 'http://localhost:3030';
 
 const TicketList = (props) => { 
   return (
     <div>
-      {props.tickets.map(ticket  => <Ticket key={ticket.guid} guid={ticket.guid} room={ticket.roomname}/>)}
+      {props.tickets.map(ticket  => <Ticket status="open" key={ticket.guid} guid={ticket.guid} room={ticket.roomname}/>)}
     </div>
   );
 };
@@ -57,6 +57,7 @@ class LiveFeed extends React.Component {
 	        ); 
 	    });
   	}
+
 
 	render() {
 	  	return (
