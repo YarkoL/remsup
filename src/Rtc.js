@@ -32,7 +32,7 @@ class Rtc extends React.Component {
 		this.room = store.get('room');
 	    if ( this.room  !==  null ) {	
 	      //we're OK let's start webrtc engine
-	      //rtcPeer.run(room);
+	      rtcPeer.run(this.room);
 	      
 	    } else {
 	  	  alert("Invalid room!");
