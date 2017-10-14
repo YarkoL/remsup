@@ -5,6 +5,10 @@ import { withRouter } from 'react-router-dom';
 import {rtcPeer, RtcPeer} from './RtcPeer.js';
 
 const styles = {
+	content : {
+		backgroundColor : 'LightSkyBlue',
+		padding : '5px'
+	},
 	chat : {
 		padding : '5px',
 	 	backgroundColor : '#ded', 
@@ -28,7 +32,7 @@ class Rtc extends React.Component {
 		this.room = store.get('room');
 	    if ( this.room  !==  null ) {	
 	      //we're OK let's start webrtc engine
-	      //rtcPeer.run(room);
+	      rtcPeer.run(this.room);
 	      
 	    } else {
 	  	  alert("Invalid room!");
@@ -49,7 +53,7 @@ class Rtc extends React.Component {
 
 	handleSend = (ev) => {
 		ev.preventDefault();
-		
+		status="open"
 		rtcPeer.appendToChat("Hello there byb!");
 		
 		console.log("RTC : pushed send button");
@@ -66,12 +70,12 @@ class Rtc extends React.Component {
 
 	render() {
 		return (
-		    <div id="content">    
-		    <button id="stopButton" onClick={this.handleStop} >Stop</button>
-			<div id="videoFrames">* room : {this.room} *</div>
-			<input type="text" id="chatInput" placeholder="Say something" />
-			<button id="sendButton" onClick={this.handleSend} >Send</button>
-			<div id="chat" style={styles.chat}></div>
+		    <div id="content" /*style={styles.content}*/>    
+			    <button id="stopButton" onClick={this.handleStop} >Stop</button>
+				<div id="videoFrames">* room : {this.room} *</div>
+				<input type="text" id="chatInput" placeholder="Say something" />
+				<button id="sendButton" onClick={this.handleSend} >Send</button>
+				<div id="chat" style={styles.chat}></div>
 		    </div> 
 		);	
 	}

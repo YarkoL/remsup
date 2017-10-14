@@ -4,7 +4,7 @@ import { Switch, Route, Link, withRouter } from 'react-router-dom';
 
 import LiveFeed from './LiveFeed';
 
-//import Rtc from './Rtc';
+import Rtc from './Rtc';
 
 
 //views -- these will be made into separate components
@@ -51,7 +51,7 @@ const Middle = () => ( //TODO add  <Route path="/rtc" component = {Rtc} />
           <Route exact path='/' component={LiveFeed}/>
           <Route path='/logs' component={ViewLogs}/>
           <Route path='/users' component={UserManagement}/>
-         
+          <Route path='/rtc' component={Rtc}/>
       </Switch>
   </div>
 )

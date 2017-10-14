@@ -31885,6 +31885,10 @@ var _LiveFeed = __webpack_require__(266);
 
 var _LiveFeed2 = _interopRequireDefault(_LiveFeed);
 
+var _Rtc = __webpack_require__(299);
+
+var _Rtc2 = _interopRequireDefault(_Rtc);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31892,9 +31896,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-//import Rtc from './Rtc';
-
 
 //views -- these will be made into separate components
 
@@ -31984,7 +31985,8 @@ var Middle = function Middle() {
         null,
         _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _LiveFeed2.default }),
         _react2.default.createElement(_reactRouterDom.Route, { path: '/logs', component: ViewLogs }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/users', component: UserManagement })
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/users', component: UserManagement }),
+        _react2.default.createElement(_reactRouterDom.Route, { path: '/rtc', component: _Rtc2.default })
       )
     )
   );
@@ -32101,15 +32103,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var data = [];
-var url = 'http://remotesupport-dev.azurewebsites.net';
-//const url = 'http://localhost:3030';
+//const url = 'http://remotesupport-dev.azurewebsites.net';
+var url = 'http://localhost:3030';
 
 var TicketList = function TicketList(props) {
 	return _react2.default.createElement(
 		'div',
 		null,
 		props.tickets.map(function (ticket) {
-			return _react2.default.createElement(_Ticket2.default, { key: ticket.guid, guid: ticket.guid, room: ticket.roomname });
+			return _react2.default.createElement(_Ticket2.default, { status: 'open', key: ticket.guid, guid: ticket.guid, room: ticket.roomname });
 		})
 	);
 };
@@ -35847,11 +35849,9 @@ var Ticket = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Ticket.__proto__ || Object.getPrototypeOf(Ticket)).call.apply(_ref, [this].concat(args))), _this), _this.handleClick = function (ev) {
       ev.preventDefault();
-      /*
-      store.set('room', this.props.room);
-      this.props.history.push("/rtc");
-      */
-      window.location.href = "main.html?" + _this.props.room;
+
+      _store2.default.set('room', _this.props.room);
+      _this.props.history.push("/rtc");
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -35863,13 +35863,13 @@ var Ticket = function (_React$Component) {
         { style: styles.ticket },
         _react2.default.createElement(
           'button',
-          { style: /*(this.props.status === 'open')*/true ? styles.ticket.button.statusopen : styles.ticket.button.statusclosed,
+          { style: this.props.status === 'open' ? styles.ticket.button.statusopen : styles.ticket.button.statusclosed,
             onClick: this.handleClick },
           'Chat'
         ),
         _react2.default.createElement(
           'div',
-          { style: /*(this.props.status === 'open')*/true ? styles.ticket.status.open : styles.ticket.status.closed },
+          { style: this.props.status === 'open' ? styles.ticket.status.open : styles.ticket.status.closed },
           _react2.default.createElement('img', { width: '75', src: this.props.avatar }),
           _react2.default.createElement(
             'div',
@@ -36001,6 +36001,177 @@ var Login = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = (0, _reactRouterDom.withRouter)(Login);
+
+/***/ }),
+/* 299 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(6);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _store = __webpack_require__(42);
+
+var _store2 = _interopRequireDefault(_store);
+
+var _reactRouterDom = __webpack_require__(43);
+
+var _RtcPeer = __webpack_require__(300);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var styles = {
+	content: {
+		backgroundColor: 'LightSkyBlue',
+		padding: '5px'
+	},
+	chat: {
+		padding: '5px',
+		backgroundColor: '#ded',
+		overflowY: 'scroll',
+		marginTop: '10px',
+		height: '150px',
+		width: '600px',
+		float: 'left'
+	}
+};
+
+var Rtc = function (_React$Component) {
+	_inherits(Rtc, _React$Component);
+
+	function Rtc(props) {
+		_classCallCheck(this, Rtc);
+
+		var _this = _possibleConstructorReturn(this, (Rtc.__proto__ || Object.getPrototypeOf(Rtc)).call(this, props));
+
+		_this.redirectToRoot = function () {
+			_this.props.history.push("/");
+		};
+
+		_this.handleSend = function (ev) {
+			ev.preventDefault();
+			status = "open";
+			_RtcPeer.rtcPeer.appendToChat("Hello there byb!");
+
+			console.log("RTC : pushed send button");
+		};
+
+		_this.handleStop = function (ev) {
+			ev.preventDefault();
+			console.log("RTC : pushed stop button");
+			//TODO tear down 
+			_store2.default.set('room', null);
+
+			_this.redirectToRoot();
+		};
+
+		var room = null;
+		return _this;
+	}
+
+	_createClass(Rtc, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {
+			this.room = _store2.default.get('room');
+			if (this.room !== null) {
+				//we're OK let's start webrtc engine
+				_RtcPeer.rtcPeer.run(this.room);
+			} else {
+				alert("Invalid room!");
+				this.redirectToRoot();
+			}
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			if (this.room !== null) {
+				_store2.default.set('room', null);
+			}
+			this.room = null;
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ id: 'content' /*style={styles.content}*/ },
+				_react2.default.createElement(
+					'button',
+					{ id: 'stopButton', onClick: this.handleStop },
+					'Stop'
+				),
+				_react2.default.createElement(
+					'div',
+					{ id: 'videoFrames' },
+					'* room : ',
+					this.room,
+					' *'
+				),
+				_react2.default.createElement('input', { type: 'text', id: 'chatInput', placeholder: 'Say something' }),
+				_react2.default.createElement(
+					'button',
+					{ id: 'sendButton', onClick: this.handleSend },
+					'Send'
+				),
+				_react2.default.createElement('div', { id: 'chat', style: styles.chat })
+			);
+		}
+	}]);
+
+	return Rtc;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRouterDom.withRouter)(Rtc);
+
+/***/ }),
+/* 300 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var RtcPeer = exports.RtcPeer = function RtcPeer() {
+    _classCallCheck(this, RtcPeer);
+
+    this.sendButton = document.getElementById("sendButton");
+    this.chat = document.getElementById("chat");
+
+    this.appendToChat = function (txt) {
+        var classId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'system';
+
+        chat.innerHTML += "<span class = " + classId + "> " + txt + "</span><br>";
+    };
+
+    this.run = function (room) {
+        var conf = new window.NetworkConfig();
+        console.log(conf);
+    };
+};
+
+;
+
+var rtcPeer = exports.rtcPeer = new RtcPeer(); // https://k94n.com/es6-modules-single-instance-pattern
 
 /***/ })
 /******/ ]);

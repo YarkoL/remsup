@@ -1,5 +1,6 @@
 /node_modules
 /mockupViews
 /in_progress
+/old
 
 yarn-error.log
