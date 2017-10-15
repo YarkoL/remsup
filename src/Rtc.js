@@ -19,11 +19,79 @@ const styles = {
 		float: 'left'
 	}
 }
+/*
 
-class Rtc extends React.Component {
+*/
+/*
+const Message = (txt) => (
+	<span>{txt} <br/></span>
+);
+*/
+
+class Message extends React.Component {
+  render (){
+    return (
+      <span>{this.props.txt} <br/></span>
+    );    
+  }
+} 
+
+/*
+const TicketList = (props) => { 
+  return (
+    <div>
+      {props.tickets.map(ticket  => <Ticket status="open" key={ticket.guid} guid={ticket.guid} room={ticket.roomname}/>)}
+    </div>
+  );
+};
+
+*/
+
+
+const Chat = (props) => {
+ return (
+ 	<div id="chat" style={styles.chat}>
+		   	{props.messages.map(message  => <Message txt={message.txt} key={message.index} />)}
+  	</div>
+ 	);	
+};
+
+/*
+class Chat extends React.Component {
 
 	constructor(props) {
 	    super(props);
+  	}
+
+	render() {
+		return (
+		   <div id="chat" style={styles.chat}>
+		   	{props.messages.map(message  => <Message txt={message.txt} key={message.index} />)}
+		   </div>
+		);	
+	}
+}
+*/
+class Rtc extends React.Component {
+
+	/*
+	Message
+	{
+		guid :
+		index:
+		txt:       
+	}
+	*/
+
+	constructor(props) {
+	    super(props);
+
+	    this.state = {
+	      messages : [],
+	      index : 0,
+	      sentMessage: '',
+	      receivedMessage: ''
+	    };
 
 	    var room = null;
   	}
@@ -51,17 +119,31 @@ class Rtc extends React.Component {
      	this.props.history.push("/");
   	}
 
+  	addMessage = (msg) => {
+	    const newMessages = this.state.messages.slice();
+	    newMessages.push(msg);
+	    this.setState({ messages: newMessages });
+	}
+
 	handleSend = (ev) => {
 		ev.preventDefault();
-		status="open"
-		rtcPeer.appendToChat("Hello there byb!");
-		
-		console.log("RTC : pushed send button");
+		let msgTxt = this.state.sentMessage;
+		this.addMessage(
+			{
+				index : this.state.index,
+				txt : msgTxt
+			}
+		);
+		this.setState((prev) => ({ index : prev.index + 1 }));
+	}
+
+	handleChange = (ev) => {
+	    this.setState({sentMessage: ev.target.value});
 	}
 
 	handleStop = (ev) => {
 		ev.preventDefault();
-		console.log("RTC : pushed stop button");
+		
 		//TODO tear down 
     	store.set('room', null);
     	
@@ -73,9 +155,11 @@ class Rtc extends React.Component {
 		    <div id="content" /*style={styles.content}*/>    
 			    <button id="stopButton" onClick={this.handleStop} >Stop</button>
 				<div id="videoFrames">* room : {this.room} *</div>
-				<input type="text" id="chatInput" placeholder="Say something" />
-				<button id="sendButton" onClick={this.handleSend} >Send</button>
-				<div id="chat" style={styles.chat}></div>
+				<input type="text" id="chatInput" placeholder="Say something" onChange={this.handleChange} />
+				<button id="sendButton" 
+					onClick={this.handleSend} 
+					value={this.state.sentMessage}>Send</button>
+				<Chat messages={this.state.messages} />
 		    </div> 
 		);	
 	}
