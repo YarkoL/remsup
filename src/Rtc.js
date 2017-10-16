@@ -127,7 +127,7 @@ class Rtc extends React.Component {
 		return (
 		    <div id="content" /*style={styles.content}*/>    
 			    <button id="stopButton" onClick={this.handleStop} >Stop</button>
-				<div id="videoFrames">* room : {this.room} *</div>
+				<div id="videoFrames"></div>
 				<input type="text" id="chatInput" ref={el => this.chatInput = el} placeholder="Say something" onChange={this.handleChange} />
 				<button id="sendButton" 
 					onClick={this.handleSend} 

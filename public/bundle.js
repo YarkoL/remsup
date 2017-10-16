@@ -36082,13 +36082,7 @@ var Rtc = function (_React$Component2) {
 					{ id: 'stopButton', onClick: this.handleStop },
 					'Stop'
 				),
-				_react2.default.createElement(
-					'div',
-					{ id: 'videoFrames' },
-					'* room : ',
-					this.room,
-					' *'
-				),
+				_react2.default.createElement('div', { id: 'videoFrames' }),
 				_react2.default.createElement('input', { type: 'text', id: 'chatInput', ref: function ref(el) {
 						return _this3.chatInput = el;
 					}, placeholder: 'Say something', onChange: this.handleChange }),
@@ -36117,27 +36111,61 @@ exports.default = (0, _reactRouterDom.withRouter)(Rtc);
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var RtcPeer = exports.RtcPeer = function RtcPeer() {
-    _classCallCheck(this, RtcPeer);
+	_classCallCheck(this, RtcPeer);
 
-    this.sendButton = document.getElementById("sendButton");
-    this.chat = document.getElementById("chat");
+	this.run = function (room) {
+		var conf = new window.NetworkConfig();
+		var rtcCall = new window.BrowserWebRtcCall(conf);
+		var videoFrames = document.getElementById("videoFrames");
 
-    this.appendToChat = function (txt) {
-        var classId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'system';
+		//UI element that contains the video
 
-        chat.innerHTML += "<span class = " + classId + "> " + txt + "</span><br>";
-    };
 
-    this.run = function (room) {
-        var conf = new window.NetworkConfig();
-        console.log(conf);
-    };
+		var videoElement = null;
+
+		rtcCall.addEventListener(function (obj, event) {
+			var evt = event;
+			switch (event.Type) {
+				case CallEventType.ConfigurationComplete:
+					console.log("Configuration complete");
+					break;
+
+				case CallEventType.FrameUpdate:
+					videoElement = evt.Frame.FrameGenerator.VideoElement;
+					videoFrames.appendChild(videoElement);
+					break;
+
+				case CallEventType.Message:
+
+					console.log("message from " + evt.ConnectionId.id + " : " + evt.Content);
+					break;
+
+				case CallEventType.CallEnded:
+					cpnsole.log("call ended with id " + evt.ConnectionId.id, "system");
+					videoElements[evt.ConnectionId.id] = null;
+					break;
+
+				case CallEventType.ConnectionFailed:
+					alert("Connection failed");
+					break;
+
+				default:
+					console.log("got unhandled event type " + event.Type);
+			}
+		});
+		setInterval(function () {
+			rtcCall.Update();
+		}, 50);
+		rtcCall.Configure(new MediaConfig());
+		//rtcCall.Listen(addr);
+		rtcCall.Call(room);
+	};
 };
 
 ;

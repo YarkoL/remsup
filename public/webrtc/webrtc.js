@@ -1,11 +1,13 @@
+
 var __extends = this && this.__extends || function(e, t) {
     for (var n in t)
         if (t.hasOwnProperty(n)) e[n] = t[n];
     function i() {
         this.constructor = e
     }
-    e.prototype = t === null ? Object.create(t) : (i.prototype = t.prototype, new i)
+    e.prototype = (t === null) ? Object.create(t) : (i.prototype = t.prototype, new i)
 };
+
 var CallException = function() {
     function e(e) {
         this.mErrorMsg = e
@@ -982,7 +984,7 @@ var FrameBuffer = function() {
         return false
     };
     e.DEBUG_SHOW_ELEMENTS = false;
-    e.sUseLazyFrames = true;
+    e.sUseLazyFrames = false;
     return e
 }();
 
