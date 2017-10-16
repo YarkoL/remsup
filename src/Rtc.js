@@ -31,47 +31,19 @@ const Message = (txt) => (
 class Message extends React.Component {
   render (){
     return (
-      <span>{this.props.txt} <br/></span>
+      <span>[{this.props.index}] {this.props.txt} <br/></span>
     );    
   }
 } 
 
-/*
-const TicketList = (props) => { 
-  return (
-    <div>
-      {props.tickets.map(ticket  => <Ticket status="open" key={ticket.guid} guid={ticket.guid} room={ticket.roomname}/>)}
-    </div>
-  );
-};
-
-*/
-
-
 const Chat = (props) => {
  return (
  	<div id="chat" style={styles.chat}>
-		   	{props.messages.map(message  => <Message txt={message.txt} key={message.index} />)}
+		   	{props.messages.map(message  => <Message index={message.index} txt={message.txt} key={message.index} />)}
   	</div>
  	);	
 };
 
-/*
-class Chat extends React.Component {
-
-	constructor(props) {
-	    super(props);
-  	}
-
-	render() {
-		return (
-		   <div id="chat" style={styles.chat}>
-		   	{props.messages.map(message  => <Message txt={message.txt} key={message.index} />)}
-		   </div>
-		);	
-	}
-}
-*/
 class Rtc extends React.Component {
 
 	/*
@@ -135,6 +107,7 @@ class Rtc extends React.Component {
 			}
 		);
 		this.setState((prev) => ({ index : prev.index + 1 }));
+		this.chatInput.value = "";
 	}
 
 	handleChange = (ev) => {
@@ -155,7 +128,7 @@ class Rtc extends React.Component {
 		    <div id="content" /*style={styles.content}*/>    
 			    <button id="stopButton" onClick={this.handleStop} >Stop</button>
 				<div id="videoFrames">* room : {this.room} *</div>
-				<input type="text" id="chatInput" placeholder="Say something" onChange={this.handleChange} />
+				<input type="text" id="chatInput" ref={el => this.chatInput = el} placeholder="Say something" onChange={this.handleChange} />
 				<button id="sendButton" 
 					onClick={this.handleSend} 
 					value={this.state.sentMessage}>Send</button>

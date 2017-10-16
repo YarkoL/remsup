@@ -15484,7 +15484,7 @@ var App = function App() {
 };
 
 //init store values
-_store2.default.set('loggedIn', false);
+_store2.default.set('loggedIn', true); //!
 _store2.default.set('room', null);
 
 var destination = document.getElementById("app");
@@ -35962,6 +35962,9 @@ var Message = function (_React$Component) {
 			return _react2.default.createElement(
 				'span',
 				null,
+				'[',
+				this.props.index,
+				'] ',
 				this.props.txt,
 				' ',
 				_react2.default.createElement('br', null)
@@ -35972,43 +35975,15 @@ var Message = function (_React$Component) {
 	return Message;
 }(_react2.default.Component);
 
-/*
-const TicketList = (props) => { 
-  return (
-    <div>
-      {props.tickets.map(ticket  => <Ticket status="open" key={ticket.guid} guid={ticket.guid} room={ticket.roomname}/>)}
-    </div>
-  );
-};
-
-*/
-
 var Chat = function Chat(props) {
 	return _react2.default.createElement(
 		'div',
 		{ id: 'chat', style: styles.chat },
 		props.messages.map(function (message) {
-			return _react2.default.createElement(Message, { txt: message.txt, key: message.index });
+			return _react2.default.createElement(Message, { index: message.index, txt: message.txt, key: message.index });
 		})
 	);
 };
-
-/*
-class Chat extends React.Component {
-
-	constructor(props) {
-	    super(props);
-  	}
-
-	render() {
-		return (
-		   <div id="chat" style={styles.chat}>
-		   	{props.messages.map(message  => <Message txt={message.txt} key={message.index} />)}
-		   </div>
-		);	
-	}
-}
-*/
 
 var Rtc = function (_React$Component2) {
 	_inherits(Rtc, _React$Component2);
@@ -36047,6 +36022,7 @@ var Rtc = function (_React$Component2) {
 			_this2.setState(function (prev) {
 				return { index: prev.index + 1 };
 			});
+			_this2.chatInput.value = "";
 		};
 
 		_this2.handleChange = function (ev) {
@@ -36096,6 +36072,8 @@ var Rtc = function (_React$Component2) {
 	}, {
 		key: 'render',
 		value: function render() {
+			var _this3 = this;
+
 			return _react2.default.createElement(
 				'div',
 				{ id: 'content' /*style={styles.content}*/ },
@@ -36111,7 +36089,9 @@ var Rtc = function (_React$Component2) {
 					this.room,
 					' *'
 				),
-				_react2.default.createElement('input', { type: 'text', id: 'chatInput', placeholder: 'Say something', onChange: this.handleChange }),
+				_react2.default.createElement('input', { type: 'text', id: 'chatInput', ref: function ref(el) {
+						return _this3.chatInput = el;
+					}, placeholder: 'Say something', onChange: this.handleChange }),
 				_react2.default.createElement(
 					'button',
 					{ id: 'sendButton',
