@@ -1,8 +1,8 @@
 
 export class RtcPeer
 {
-    const conf = new window.NetworkConfig();
-    rtcCall = new window.BrowserWebRtcCall(conf);
+    conf = new window.NetworkConfig();
+    rtcCall = new window.BrowserWebRtcCall(this.conf);
 
     Run = (room, processMessage) => {
     
