@@ -1,24 +1,20 @@
 
 export class RtcPeer
 {
+    rtcCall = new window.BrowserWebRtcCall(new window.NetworkConfig);
 
-    run = (room) => {
-        var conf = new window.NetworkConfig;
-        var rtcCall = new window.BrowserWebRtcCall(conf);
-        const videoFrames = document.getElementById("videoFrames");
-
-	    //UI element that contains the video
-	    
-
+    Run = (room, processMessage) => {
+    
+        var videoFrames = null;
 	    var videoElement = null;
+        const call = this.rtcCall;
 
-	    rtcCall.addEventListener(function(obj, event) 
-	    {
+	    call.addEventListener(function(obj, event)  {
 	        var evt = event;
-	        switch(event.Type) 
-	        {
+             videoFrames = document.getElementById("videoFrames");
+	        switch(event.Type)  {
 	            case CallEventType.ConfigurationComplete : 
-	                console.log("Configuration complete");
+	                processMessage("Configuration complete", "System");
 	                break;
 
 	            case CallEventType.FrameUpdate :
@@ -27,12 +23,12 @@ export class RtcPeer
 	                break;
 
 	            case CallEventType.Message :
-	                
 	                console.log("message from " + evt.ConnectionId.id + " : " + evt.Content);
+                    processMessage(evt.Content, evt.ConnectionId.id);
 	                break;
 
 	            case CallEventType.CallEnded : 
-	                cpnsole.log("call ended with id " + evt.ConnectionId.id, "system");
+	                console.log("call ended with id " + evt.ConnectionId.id, "system");
 	                videoElements[evt.ConnectionId.id] = null;
 	                break;    
 
@@ -45,13 +41,26 @@ export class RtcPeer
 	        }
 	    });
 	    setInterval(function() {
-	        rtcCall.Update()
-	    }, 50);
-	    rtcCall.Configure(new MediaConfig());
-	    //rtcCall.Listen(addr);
-		rtcCall.Call(room);
+            call.Update();
+        }, 50);
+	    call.Configure(new MediaConfig()); //TODO is it necessary?
+	   
+		call.Call(room);
 	}
-    
+
+    Stop = () => {
+        if (this.rtcCall == false)  {
+            console.log("Could not dispose call");
+        } 
+        else {
+            this.rtcCall.Dispose();
+            console.log("Call disposed");
+        }
+    }    
+
+    Send = (msg) => {
+        this.rtcCall.Send(msg);
+    } 
 };
 
 export let rtcPeer = new RtcPeer(); // https://k94n.com/es6-modules-single-instance-pattern

@@ -1091,7 +1091,7 @@ var FrameBuffer = function() {
         return false
     };
     e.DEBUG_SHOW_ELEMENTS = false;
-    e.sUseLazyFrames = false;
+    e.sUseLazyFrames = true;
     return e
 }();
 var MediaPeer = function(e) {
