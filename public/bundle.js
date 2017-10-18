@@ -31976,18 +31976,16 @@ var Left = function Left() {
 };
 
 var Middle = function Middle() {
-  return (//TODO add  <Route path="/rtc" component = {Rtc} /> 
+  return _react2.default.createElement(
+    'div',
+    { className: 'middle' },
     _react2.default.createElement(
-      'div',
-      { className: 'middle' },
-      _react2.default.createElement(
-        _reactRouterDom.Switch,
-        null,
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _LiveFeed2.default }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/logs', component: ViewLogs }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/users', component: UserManagement }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/rtc', component: _Rtc2.default })
-      )
+      _reactRouterDom.Switch,
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _LiveFeed2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/logs', component: ViewLogs }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/users', component: UserManagement }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/rtc', component: _Rtc2.default })
     )
   );
 };
@@ -32162,6 +32160,10 @@ var LiveFeed = function (_React$Component) {
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			this.initSocket();
+			this.createTicket({
+				guid: "00042",
+				roomname: "tickettest"
+			});
 		}
 	}, {
 		key: 'render',

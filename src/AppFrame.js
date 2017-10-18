@@ -43,9 +43,9 @@ const Left = () => (
       <img className="brand" src = {require('./img/brand.jpg')}/>
       
   </div>
-)
+)  
 
-const Middle = () => ( //TODO add  <Route path="/rtc" component = {Rtc} /> 
+const Middle = () => ( 
   <div className="middle">
     <Switch>
           <Route exact path='/' component={LiveFeed}/>

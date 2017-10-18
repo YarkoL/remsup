@@ -24,6 +24,12 @@ class LiveFeed extends React.Component {
 
 	componentWillMount() {
 		this.initSocket();
+		this.createTicket (
+        	{
+        		guid : "00042",
+        		roomname : "tickettest"
+        	}
+        );	
 	}
 
 	createTicket = (newTicket) => {
