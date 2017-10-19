@@ -54,8 +54,9 @@ class Ticket extends React.Component {
           <img width="75" src={this.props.avatar} /> 
               <div style = {styles.ticket.fields}>
                 <div style = {styles.ticket.fields.username}> 
-                  {this.props.guid}
+                  {this.props.title}
                 </div>
+                {this.props.description}
               </div>
         </div>
      </div>   

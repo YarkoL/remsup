@@ -32075,7 +32075,7 @@ exports.default = (0, _reactRouterDom.withRouter)(AppFrame);
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -32104,79 +32104,120 @@ var data = [];
 //const url = 'http://remotesupport-dev.azurewebsites.net';
 var url = 'http://localhost:3030';
 
+/*
+
+  Ticket is an UI represenation of a session, for example like
+
+  {
+  "__v":1,
+  "title":"some thing",
+  "description":"desc",
+  "severity":0,
+  "status":0,
+  "report":"",
+  "_id":"59e88e278a06de404c905db0",
+  "attachments":[
+    {
+      "_id":"59e88e278a06de404c905db1",
+      "guid":"000001",
+      "__v":0,
+      "createdOn":"2017-10-19T11:36:07.753Z"
+    }
+  ],
+  "tags":[
+    "1st","2nd"
+  ],
+  "users":[
+    {
+      "__v":0,
+      "icon":"",
+      "prioritylevel":1,
+      "organisation":"FI0001",
+      "joineddate":"2017-09-29T08:07:12.593Z",
+      "type":"",
+      "password":"password",
+      "email":"lucas.cosson@softability.fi",
+      "lastname":"Cosson",
+      "firstname":"Lucas",
+      "guid":"000001",
+      "_id":"59cdff30ab237215fc6f9aae",
+      "sessionHistory":[]
+    }
+  ],
+  "createdOn":"2017-10-19T11:36:07.749Z"
+  }
+  */
+
 var TicketList = function TicketList(props) {
-	return _react2.default.createElement(
-		'div',
-		null,
-		props.tickets.map(function (ticket) {
-			return _react2.default.createElement(_Ticket2.default, { status: 'open', key: ticket.guid, guid: ticket.guid, room: ticket.roomname });
-		})
-	);
+  return _react2.default.createElement(
+    'div',
+    null,
+    props.tickets.map(function (ticket) {
+      return _react2.default.createElement(_Ticket2.default, { status: 'open', key: ticket.id, title: ticket.title, description: ticket.description, room: ticket.id });
+    })
+  );
 };
 
 var LiveFeed = function (_React$Component) {
-	_inherits(LiveFeed, _React$Component);
+  _inherits(LiveFeed, _React$Component);
 
-	function LiveFeed() {
-		_classCallCheck(this, LiveFeed);
+  function LiveFeed() {
+    _classCallCheck(this, LiveFeed);
 
-		var _this = _possibleConstructorReturn(this, (LiveFeed.__proto__ || Object.getPrototypeOf(LiveFeed)).call(this));
+    var _this = _possibleConstructorReturn(this, (LiveFeed.__proto__ || Object.getPrototypeOf(LiveFeed)).call(this));
 
-		_this.createTicket = function (newTicket) {
-			var newTickets = _this.state.tickets.slice();
-			newTickets.push(newTicket);
-			_this.setState({ tickets: newTickets });
-		};
+    _this.createTicket = function (newTicket) {
+      var newTickets = _this.state.tickets.slice();
+      newTickets.push(newTicket);
+      _this.setState({ tickets: newTickets });
+    };
 
-		_this.initSocket = function () {
-			var socket = (0, _socket2.default)(url);
-			socket.on('connect', function () {
-				console.log('connected');
-			});
-			socket.on('disconnect', function () {
-				console.log('disconnected');
-			});
-			socket.on('error', function (err) {
-				if (err === 'handshake error') {
-					console.log('handshake error', err);
-				} else {
-					console.log('io error', err);
-				}
-			});
-			socket.on('roomname', function (data) {
-				console.log('socket message ' + JSON.stringify(data));
-				_this.createTicket({
-					guid: data.guid,
-					roomname: data.roomname
-				});
-			});
-		};
+    _this.initSocket = function () {
+      var socket = (0, _socket2.default)(url);
+      socket.on('connect', function () {
+        console.log('connected');
+      });
+      socket.on('disconnect', function () {
+        console.log('disconnected');
+      });
+      socket.on('error', function (err) {
+        if (err === 'handshake error') {
+          console.log('handshake error', err);
+        } else {
+          console.log('io error', err);
+        }
+      });
+      socket.on('roomname', function (data) {
+        console.log('socket message ' + JSON.stringify(data));
+        _this.createTicket({
+          title: data.title,
+          description: data.description,
+          id: data._id
+        });
+      });
+    };
 
-		_this.state = { tickets: data };
-		return _this;
-	}
+    _this.state = { tickets: data };
+    return _this;
+  }
 
-	_createClass(LiveFeed, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			this.initSocket();
-			this.createTicket({
-				guid: "00042",
-				roomname: "tickettest"
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(TicketList, { tickets: this.state.tickets })
-			);
-		}
-	}]);
+  _createClass(LiveFeed, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.initSocket();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(TicketList, { tickets: this.state.tickets })
+      );
+    }
+  }]);
 
-	return LiveFeed;
+  return LiveFeed;
 }(_react2.default.Component);
 
 exports.default = LiveFeed;
@@ -35879,8 +35920,9 @@ var Ticket = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { style: styles.ticket.fields.username },
-              this.props.guid
-            )
+              this.props.title
+            ),
+            this.props.description
           )
         )
       );
