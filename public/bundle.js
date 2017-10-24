@@ -32101,8 +32101,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var data = [];
-//const url = 'http://remotesupport-dev.azurewebsites.net';
-var url = 'http://localhost:3030';
+var url = 'https://remotesupport-dev.azurewebsites.net';
+//const url = 'http://localhost:3030';
+
 
 /*
 
@@ -32153,7 +32154,7 @@ var TicketList = function TicketList(props) {
     'div',
     null,
     props.tickets.map(function (ticket) {
-      return _react2.default.createElement(_Ticket2.default, { status: 'open', key: ticket.id, title: ticket.title, description: ticket.description, room: ticket.id });
+      return _react2.default.createElement(_Ticket2.default, { status: 'open', key: ticket, title: ticket.title, description: ticket.description, room: ticket.id });
     })
   );
 };

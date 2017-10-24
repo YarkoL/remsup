@@ -3,8 +3,8 @@ import React from 'react';
 import Ticket from './Ticket';
 
 let data = []
-//const url = 'http://remotesupport-dev.azurewebsites.net';
-const url = 'http://localhost:3030';
+const url = 'https://remotesupport-dev.azurewebsites.net';
+//const url = 'http://localhost:3030';
 
 
 /*
@@ -55,7 +55,7 @@ const url = 'http://localhost:3030';
 const TicketList = (props) => { 
   return (
     <div>
-      {props.tickets.map(ticket  => <Ticket status="open" key={ticket.id} title={ticket.title} description={ticket.description} room={ticket.id}/>)}
+      {props.tickets.map(ticket   => <Ticket status="open" key={ticket} title={ticket.title} description={ticket.description} room={ticket.id}/>)}
     </div>
   );
 };
