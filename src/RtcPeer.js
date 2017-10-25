@@ -22,7 +22,8 @@ export class RtcPeer
 
 	            case CallEventType.FrameUpdate :
 	                videoElement = evt.Frame.FrameGenerator.VideoElement;
-	                videoFrames.appendChild(videoElement);
+                    if (videoFrames)
+	                   videoFrames.appendChild(videoElement);
 	                break;
 
 	            case CallEventType.Message :
@@ -32,7 +33,10 @@ export class RtcPeer
 
 	            case CallEventType.CallEnded : 
 	                console.log("call ended with id " + evt.ConnectionId.id, "system");
-	                videoElements[evt.ConnectionId.id] = null;
+	                if (videoElement)
+                        videoElement[evt.ConnectionId.id] = null;
+                     if (videoFrames)
+                       videoFrames.innerHTML = ""; //TODO watch for memoryleaks?
 	                break;    
 
 	            case CallEventType.ConnectionFailed :

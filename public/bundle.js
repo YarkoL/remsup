@@ -32154,7 +32154,7 @@ var TicketList = function TicketList(props) {
     'div',
     null,
     props.tickets.map(function (ticket) {
-      return _react2.default.createElement(_Ticket2.default, { status: 'open', key: ticket, title: ticket.title, description: ticket.description, room: ticket.id });
+      return _react2.default.createElement(_Ticket2.default, { status: 'open', key: ticket.id, title: ticket.title, description: ticket.description, room: ticket.id });
     })
   );
 };
@@ -36193,7 +36193,7 @@ var RtcPeer = exports.RtcPeer = function RtcPeer() {
 
 																case CallEventType.FrameUpdate:
 																				videoElement = evt.Frame.FrameGenerator.VideoElement;
-																				videoFrames.appendChild(videoElement);
+																				if (videoFrames) videoFrames.appendChild(videoElement);
 																				break;
 
 																case CallEventType.Message:
@@ -36203,7 +36203,8 @@ var RtcPeer = exports.RtcPeer = function RtcPeer() {
 
 																case CallEventType.CallEnded:
 																				console.log("call ended with id " + evt.ConnectionId.id, "system");
-																				videoElements[evt.ConnectionId.id] = null;
+																				if (videoElement) videoElement[evt.ConnectionId.id] = null;
+																				if (videoFrames) videoFrames.innerHTML = ""; //TODO watch for memoryleaks?
 																				break;
 
 																case CallEventType.ConnectionFailed:

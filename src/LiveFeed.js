@@ -55,7 +55,7 @@ const url = 'https://remotesupport-dev.azurewebsites.net';
 const TicketList = (props) => { 
   return (
     <div>
-      {props.tickets.map(ticket   => <Ticket status="open" key={ticket} title={ticket.title} description={ticket.description} room={ticket.id}/>)}
+      {props.tickets.map(ticket   => <Ticket status="open" key={ticket.id} title={ticket.title} description={ticket.description} room={ticket.id}/>)}
     </div>
   );
 };
