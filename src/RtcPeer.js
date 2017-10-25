@@ -2,10 +2,12 @@
 export class RtcPeer
 {
     conf = new window.NetworkConfig();
-    rtcCall = new window.BrowserWebRtcCall(this.conf);
+    rtcCall = null;
 
     Run = (room, processMessage) => {
     
+        this.rtcCall = new window.BrowserWebRtcCall(this.conf);
+
         var videoFrames = null;
 	    var videoElement = null;
         const call = this.rtcCall;

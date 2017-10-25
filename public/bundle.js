@@ -36173,9 +36173,11 @@ var RtcPeer = exports.RtcPeer = function RtcPeer() {
 				_classCallCheck(this, RtcPeer);
 
 				this.conf = new window.NetworkConfig();
-				this.rtcCall = new window.BrowserWebRtcCall(this.conf);
+				this.rtcCall = null;
 
 				this.Run = function (room, processMessage) {
+
+								_this.rtcCall = new window.BrowserWebRtcCall(_this.conf);
 
 								var videoFrames = null;
 								var videoElement = null;
