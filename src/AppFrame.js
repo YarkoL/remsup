@@ -20,7 +20,7 @@ const UserManagement = () => (
 
 //LAYOUT ELEMENTS
 
-const Header = () => (
+const Header = () => (rtcrtc
   <header>
     <img className="logo" src={require('./img/logo.jpg')}/>
     <input placeholder="search/filter" />
@@ -29,7 +29,7 @@ const Header = () => (
 )
 
 const Left = () => (
-  <div className="left">
+  <div className="left">rtc
       <img className="center" src = {require('./img/clock.jpg')}/>
       
       <div id="buttons">
