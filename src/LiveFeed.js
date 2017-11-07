@@ -83,7 +83,7 @@ class LiveFeed extends React.Component {
 	initSocket = () => {
 	    const socket = openSocket(url);
 	    socket.on('connect', () => {
-		    console./rtclog('connected');
+		    console.log('connected');
 		  });
 		  socket.on('disconnect', () => {
 		    console.log('disconnected');
