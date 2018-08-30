@@ -1,4 +1,13 @@
 
+Beginning of a remote support hub. Preserved mainly for historical/nostalgic purposes. 
+
+Frontend is "vanilla" React. (The final product used Redux for state management).
+
+Backend is accessed via socket. You need to implement api, the old uri is defunct.
+
+Uses WebRTC and can communicate with the Unity plugin
+
+
 How to install and run on Windows.
 --------------------------------
 by Jarkko 09-21-17
